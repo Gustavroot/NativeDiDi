@@ -7,9 +7,8 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-    
-    <uses-permission
-        android:name="android.permission.INTERNET">
+
+    <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
 
     <application
@@ -25,6 +24,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="cr.didi.didi.DisplayListActivity"
+            android:label="@string/title_activity_display_list"
+            android:parentActivityName="cr.didi.didi.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cr.didi.didi.MainActivity" />
         </activity>
     </application>
 

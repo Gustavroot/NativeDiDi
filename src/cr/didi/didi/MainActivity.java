@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-	public final static String EXTRA_MESSAGE = "cr.didi.didi.MESSAGE";
+	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +44,10 @@ public class MainActivity extends Activity {
     	
     	//Por que no sirven estos try, catch e if??
     	//FALTA VALIDAR EL CASO DE ESTAR VACIO EL EDItTEXT
-    	try{
-        	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
-        	message = editText.getText().toString();
-    	}
-    	catch(Exception e){
-    		message="0";
-    	}
-    	if(message == ""){
-    		Toast.makeText(MainActivity.this, "ajua", Toast.LENGTH_SHORT).show();
-    		message="0";
-    	}
-    	
-    	Toast.makeText(MainActivity.this, "sin error...", Toast.LENGTH_SHORT).show();
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	message = editText.getText().toString();
+
+    	//Toast.makeText(MainActivity.this, "sin error...", Toast.LENGTH_SHORT).show();
     	//Toast.makeText(MainActivity.this, "http://tecmo.webfactional.com/didi/productos?idClienteParam="+message, Toast.LENGTH_SHORT).show();
 
     	DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
@@ -81,7 +72,7 @@ public class MainActivity extends Activity {
     	        sb.append(line + "\n");
     	    }
     	    result = sb.toString();
-    	    Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+    	    //Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
     	} catch (Exception e) {
     		Toast.makeText(MainActivity.this, "error alguno...", Toast.LENGTH_SHORT).show();
     	    // Oops
@@ -91,9 +82,12 @@ public class MainActivity extends Activity {
     	    try{if(inputStream != null)inputStream.close();}catch(Exception squish){}
     	}
 
-    	//Intent intent = new Intent(this, DisplayMessageActivity.class);
+    	
+    	
+    	Intent intent = new Intent(this, DisplayListActivity.class);
     	//string msg
-    	//intent.putExtra(EXTRA_MESSAGE, message);
+    	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
+    	startActivity(intent);
     	
     	//Put up the Yes/No message box
     	/**
