@@ -9,14 +9,20 @@ import org.json.JSONObject;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DisplayListActivity extends Activity {
 
@@ -24,6 +30,11 @@ public class DisplayListActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display_list);
+		
+        //Se mantiene oculta la barra de progreso desde el inicio
+        ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+        pb.setVisibility(View.GONE);
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
 		Intent intent = getIntent();
@@ -51,6 +62,13 @@ public class DisplayListActivity extends Activity {
 	    		//jsonArray.getJSONObject(i);
 	            listContents.add("TP: "+jsonArray.getJSONObject(i).get("tipoProducto").toString()+"\n"+"NP: "+jsonArray.getJSONObject(i).get("nombreProducto").toString());
 	            ListView myListView = (ListView) findViewById(R.id.lista_despliegue_search);
+	            myListView.setOnItemClickListener(new OnItemClickListener() {
+	            	@Override
+	            	public void onItemClick(AdapterView<?> parent, View view,	int position, long id) {
+	            	    Toast.makeText(getApplicationContext(), "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
+	            	    clickeadoElementosLista();
+	                }
+	            });
 	            myListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listContents));
 	        }
 	    	
@@ -70,6 +88,70 @@ public class DisplayListActivity extends Activity {
 	    catch(Exception e){}
 	}
 
+	
+	
+	//------------------------------------------------------------------------
+    /** Called when the user clicks the Send button */
+    public void haciaGoogleMap() {
+    	int suma=0;
+    	for (int i = 0; i < 1000000000; i++)
+        {
+    		suma=suma+1;
+        }
+    	//Toast.makeText(getApplicationContext(), "Hacia google map...", Toast.LENGTH_LONG).show();
+    }
+
+
+    
+    private class MyAsyncTaskClickList extends AsyncTask<String, Integer, Double>{
+    	@Override
+    	protected Double doInBackground(String... params) {
+    		// TODO Auto-generated method stub
+    	    haciaGoogleMap();
+    	    return null;
+    	}
+    	protected void onPostExecute(Double result){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+    		pb.setVisibility(View.GONE);
+    		Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
+    	}
+    	protected void onProgressUpdate(Integer... progress){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+    	    pb.setProgress(progress[0]);
+    	}
+    }
+    
+    public void clickeadoElementosLista() {
+    	Toast.makeText(getApplicationContext(), "Previous...", Toast.LENGTH_LONG).show();
+		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+		pb.setVisibility(View.VISIBLE);
+		new MyAsyncTaskClickList().execute();		
+
+    	/*
+    	String value=null;
+    	int longValue=0;
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	value = editText.getText().toString();
+    	longValue=value.length();
+    	// TODO Auto-generated method stub
+    	if(longValue<1){
+    		// out of range
+    		Toast.makeText(this, "Por favor ingrese algo.", Toast.LENGTH_LONG).show();
+    	}else{
+    		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		pb.setVisibility(View.VISIBLE);
+    		new MyAsyncTask().execute(value);		
+    	}
+    	*/
+    }
+	//------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */

@@ -1,5 +1,6 @@
 package cr.didi.didi;
 
+import cr.didi.didi.R;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,10 +13,12 @@ import org.apache.http.params.BasicHttpParams;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -26,6 +29,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        //Se mantiene oculta la barra de progreso desde el inicio
+        ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+        pb.setVisibility(View.GONE);
     }
 
 
@@ -35,9 +42,9 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
+
     /** Called when the user clicks the Send button */
-    public void haciaLaBusqueda(View view) {
+    public void haciaLaBusqueda() {
     	
     	//System.out.print("La cosa.");
     	String message=null;
@@ -83,7 +90,6 @@ public class MainActivity extends Activity {
     	}
 
     	
-    	
     	Intent intent = new Intent(this, DisplayListActivity.class);
     	//string msg
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
@@ -106,7 +112,42 @@ public class MainActivity extends Activity {
     	builder.setNegativeButton("No", null);						//Do nothing on no
     	builder.show();
     	*/
-    	
+    }
+
+
+    
+    private class MyAsyncTask extends AsyncTask<String, Integer, Double>{
+    	@Override
+    	protected Double doInBackground(String... params) {
+    		// TODO Auto-generated method stub
+    	    haciaLaBusqueda();
+    	    return null;
+    	}
+    	protected void onPostExecute(Double result){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		pb.setVisibility(View.GONE);
+    		Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
+    	}
+    	protected void onProgressUpdate(Integer... progress){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    	    pb.setProgress(progress[0]);
+    	}
     }
     
+    public void clickeadoAlBotonBusqueda(View view) {
+    	String value=null;
+    	int longValue=0;
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	value = editText.getText().toString();
+    	longValue=value.length();
+    	// TODO Auto-generated method stub
+    	if(longValue<1){
+    		// out of range
+    		Toast.makeText(this, "Por favor ingrese algo.", Toast.LENGTH_LONG).show();
+    	}else{
+    		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		pb.setVisibility(View.VISIBLE);
+    		new MyAsyncTask().execute(value);		
+    	}
+    }
 }

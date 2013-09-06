@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1"
+            android:layout_weight=".10"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:orientation="horizontal" >
@@ -23,13 +23,11 @@
                 android:layout_width="0dp"
                 android:layout_weight=".15"
                 android:layout_height="match_parent"
-                android:background="@drawable/profile_button"
+                android:background="@drawable/configuser"
                 />
             
-
-            
             <EditText android:id="@+id/text_field_busqueda_inicio"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="@string/string_buscar"
                 android:layout_weight=".6"
                 android:layout_width="0dp" />
@@ -39,27 +37,31 @@
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-                android:background="@drawable/logo_dd"
-                android:scaleType="centerCrop"
-                android:onClick="haciaLaBusqueda"
+                android:background="@drawable/logoddflat"
+                android:scaleType="centerInside"
+                android:onClick="clickeadoAlBotonBusqueda"
                 />
             
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_weight=".65"
             android:orientation="horizontal" >
-            
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/app_name" />
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                />
                 
-        </LinearLayout>
+        </RelativeLayout>
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +78,8 @@
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-                android:src="@drawable/logo_dd"
+                android:scaleType="centerCrop"
+                android:src="@drawable/didirapidtaxi"
                 />
             
             <ImageButton
@@ -84,7 +87,8 @@
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-                android:src="@drawable/logo_dd"
+                android:scaleType="centerCrop"
+                android:src="@drawable/didirapidexpress"
                 />
             
             <ImageButton
@@ -92,7 +96,8 @@
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-                android:src="@drawable/logo_dd"
+                android:scaleType="centerCrop"
+                android:src="@drawable/didirapidprofesionales"
                 />
             
             <ImageButton
@@ -100,7 +105,8 @@
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-                android:src="@drawable/logo_dd"
+                android:scaleType="centerCrop"
+                android:src="@drawable/didirapidreparaciones"
                 />
             
             

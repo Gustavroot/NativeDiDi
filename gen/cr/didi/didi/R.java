@@ -21,21 +21,30 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int lodo_dd_crop=0x7f020001;
-        public static final int logo_dd=0x7f020002;
-        public static final int profile_button=0x7f020003;
+        public static final int configuser=0x7f020000;
+        public static final int didi_rapid_express=0x7f020001;
+        public static final int didirapidexpress=0x7f020002;
+        public static final int didirapidprofesionales=0x7f020003;
+        public static final int didirapidreparaciones=0x7f020004;
+        public static final int didirapidtaxi=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int lodo_dd_crop=0x7f020007;
+        public static final int logo_dd=0x7f020008;
+        public static final int logoddflat=0x7f020009;
+        public static final int profile_button=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f080008;
-        public static final int boton_imagen_hacia_profile=0x7f080001;
-        public static final int boton_imagen_menu_principal_1=0x7f080004;
-        public static final int boton_imagen_menu_principal_2=0x7f080005;
-        public static final int boton_imagen_menu_principal_3=0x7f080006;
-        public static final int boton_imagen_menu_principal_4=0x7f080007;
-        public static final int boton_imagen_proceder_busqueda=0x7f080003;
+        public static final int action_settings=0x7f08000a;
+        public static final int boton_imagen_hacia_profile=0x7f080002;
+        public static final int boton_imagen_menu_principal_1=0x7f080006;
+        public static final int boton_imagen_menu_principal_2=0x7f080007;
+        public static final int boton_imagen_menu_principal_3=0x7f080008;
+        public static final int boton_imagen_menu_principal_4=0x7f080009;
+        public static final int boton_imagen_proceder_busqueda=0x7f080004;
         public static final int lista_despliegue_search=0x7f080000;
-        public static final int text_field_busqueda_inicio=0x7f080002;
+        public static final int progressBar1=0x7f080005;
+        public static final int progressBarOverList=0x7f080001;
+        public static final int text_field_busqueda_inicio=0x7f080003;
     }
     public static final class layout {
         public static final int activity_display_list=0x7f030000;
