@@ -26,6 +26,11 @@ import android.widget.Toast;
 
 public class DisplayListActivity extends Activity {
 
+	//Creacion e iniciacion de las dos constantes utilizadas aqui para el paso
+	//hacia el view de GoogleMap
+	public final static String EXTRA_MESSAGE_LAT = "com.example.myfirstapp.MESSAGE_LAT";
+	public final static String EXTRA_MESSAGE_LNG = "com.example.myfirstapp.MESSAGE_LNG";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,8 +42,10 @@ public class DisplayListActivity extends Activity {
 		
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		//Get intent
 		Intent intent = getIntent();
-		String result= intent.getStringExtra(MainActivity.EXTRA_MESSAGE_RESULT_SEARCH);
+		String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_RESULT_SEARCH);
 		
         
 	    // Create the text view
@@ -65,7 +72,7 @@ public class DisplayListActivity extends Activity {
 	            myListView.setOnItemClickListener(new OnItemClickListener() {
 	            	@Override
 	            	public void onItemClick(AdapterView<?> parent, View view,	int position, long id) {
-	            	    Toast.makeText(getApplicationContext(), "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
+	            	    //Toast.makeText(getApplicationContext(), "Click ListItem Number " + jsonArray.getJSONObject(i).get("tipoProducto").toString(), Toast.LENGTH_LONG).show();
 	            	    clickeadoElementosLista();
 	                }
 	            });
@@ -93,11 +100,22 @@ public class DisplayListActivity extends Activity {
 	//------------------------------------------------------------------------
     /** Called when the user clicks the Send button */
     public void haciaGoogleMap() {
+    	
+    	Intent intent = new Intent(this, GoogleMapActivity.class);
+    	String latitud="9.23435";
+    	String longitud="-84.23435";
+    	intent.putExtra(EXTRA_MESSAGE_LAT, latitud);
+    	intent.putExtra(EXTRA_MESSAGE_LNG, longitud);
+    	startActivity(intent);
+    	
+    	/*
     	int suma=0;
     	for (int i = 0; i < 1000000000; i++)
         {
     		suma=suma+1;
         }
+        */
+    	
     	//Toast.makeText(getApplicationContext(), "Hacia google map...", Toast.LENGTH_LONG).show();
     }
 
@@ -122,7 +140,7 @@ public class DisplayListActivity extends Activity {
     }
     
     public void clickeadoElementosLista() {
-    	Toast.makeText(getApplicationContext(), "Previous...", Toast.LENGTH_LONG).show();
+    	//Toast.makeText(getApplicationContext(), "Previous...", Toast.LENGTH_LONG).show();
 		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
 		pb.setVisibility(View.VISIBLE);
 		new MyAsyncTaskClickList().execute();		

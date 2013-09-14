@@ -4,12 +4,24 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <permission
+        android:name="cr.didi.didi.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="cr.didi.didi.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
-
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
+        android:targetSdkVersion="15" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +40,27 @@
         <activity
             android:name="cr.didi.didi.DisplayListActivity"
             android:label="@string/title_activity_display_list"
+            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cr.didi.didi.SecondActivity" />
+        </activity>
+        <activity
+            android:name="cr.didi.didi.GoogleMapActivity"
+            android:label="@string/title_activity_google_map"
+            android:parentActivityName="cr.didi.didi.DisplayListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cr.didi.didi.DisplayListActivity" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBtpxfp38PfD2FH8RuUnpgmGlQJ9SUJ7wk" />
+
+        <activity
+            android:name="cr.didi.didi.SecondActivity"
+            android:label="@string/title_activity_second"
             android:parentActivityName="cr.didi.didi.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
