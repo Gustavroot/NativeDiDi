@@ -19,14 +19,18 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class SecondActivity extends Activity {
 
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
+	
+	private static float init_x = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,10 @@ public class SecondActivity extends Activity {
         //Se mantiene oculta la barra de progreso desde el inicio
         ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
         pb.setVisibility(View.GONE);
+        
+        //Se agrega el codigo para poder hacer swipe
+        ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
+        vf.setOnTouchListener(new ListenerTouchViewFlipperSecondActivity());
 	}
 
 	/**
@@ -180,5 +188,38 @@ public class SecondActivity extends Activity {
     		pb.setVisibility(View.VISIBLE);
     		new MyAsyncTask().execute(value);		
     	}
-    }	
+    }
+    
+    
+    private class ListenerTouchViewFlipperSecondActivity implements View.OnTouchListener{
+    	
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
+
+            switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: //Cuando el usuario toca la pantalla por primera vez
+                init_x=(float)event.getX();
+                //Toast.makeText(MainActivity.this, "X position: "+init_x, Toast.LENGTH_SHORT).show();
+                return true;
+            case MotionEvent.ACTION_UP: //Cuando el usuario deja de presionar
+                float distance =init_x-(float)event.getX();
+            	//Toast.makeText(MainActivity.this, "X position: "+event.getX(), Toast.LENGTH_SHORT).show();
+            	//Toast.makeText(MainActivity.this, "X position-2: "+(float)event.getX(), Toast.LENGTH_SHORT).show();
+            	//Toast.makeText(MainActivity.this, "X position: "+distance, Toast.LENGTH_SHORT).show();
+                if(distance>0)
+                {
+                     vf.showNext();
+                }
+                if(distance<0)
+                {
+                     vf.showPrevious();
+                }
+            default:
+                break;
+            }
+            return false;
+        }
+    }
+    
 }

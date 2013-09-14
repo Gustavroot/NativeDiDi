@@ -28,7 +28,7 @@ public class DisplayListActivity extends Activity {
 	
 	private static double latitud_cliente = 0;
 	private static double longitud_cliente = 0;
-	private static double longitud_cliente = 0;
+	private static JSONArray jArray;
 
 	//Creacion e iniciacion de las dos constantes utilizadas aqui para el paso
 	//hacia el view de GoogleMap
@@ -64,6 +64,7 @@ public class DisplayListActivity extends Activity {
 	    	//json.get("ptm");
 	    	//JSONArray jsonArray = new JSONArray(result);
 	    	JSONArray jsonArray = new JSONArray(json.get("ptm").toString());
+	    	jArray=jsonArray;
 	    	int length = jsonArray.length();
 	    	List<String> listContents = new ArrayList<String>(length);
 	    	for (int i = 0; i < length; i++)
@@ -76,7 +77,16 @@ public class DisplayListActivity extends Activity {
 	            myListView.setOnItemClickListener(new OnItemClickListener() {
 	            	@Override
 	            	public void onItemClick(AdapterView<?> parent, View view,	int position, long id) {
+	            		String tipoprod="";
+	            		try{
+	            			tipoprod=jArray.getJSONObject(position).get("tipoProducto").toString();
+	            		}
+	            		catch(Exception e){
+	            			tipoprod="nou...";
+	            		}
+	            		Toast.makeText(getApplicationContext(), "Tipo producto " + tipoprod, Toast.LENGTH_LONG).show();
 	            	    //Toast.makeText(getApplicationContext(), "Click ListItem Number " + jsonArray.getJSONObject(i).get("tipoProducto").toString(), Toast.LENGTH_LONG).show();
+	            		//Toast.makeText(getApplicationContext(), "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
 	            	    clickeadoElementosLista();
 	                }
 	            });
@@ -207,5 +217,4 @@ public class DisplayListActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
 }

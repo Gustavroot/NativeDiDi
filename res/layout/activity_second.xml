@@ -50,6 +50,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_weight=".65"
+            android:background="@drawable/border"
             android:orientation="horizontal" >
 
             <ProgressBar
@@ -60,7 +61,60 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="24dp"
                 />
-                
+            
+                <ViewFlipper android:id="@+id/viewFlipperSecondActivity"
+                    android:layout_height="match_parent"
+        			android:layout_width="match_parent" >
+
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="vertical" >
+
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+		                      android:text="Taxis"
+		                      android:textSize="23sp"
+		                      android:gravity="center_horizontal"/>
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="vertical" >
+			 
+			            <TextView android:layout_height="wrap_content"
+	        	              android:layout_width="fill_parent"
+	            	          android:text="Eventos"
+	                	      android:textSize="23sp"
+	                    	  android:gravity="center_horizontal"/>
+			        </LinearLayout>
+
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="vertical" >
+
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+    		                  android:text="Reservas"
+        		              android:textSize="23sp"
+            		          android:gravity="center_horizontal"/>
+			        </LinearLayout>
+        
+			        <LinearLayout
+            		    android:layout_height="fill_parent"
+		                android:layout_width="fill_parent"
+		                android:orientation="vertical" >
+	 
+			            <TextView android:layout_height="wrap_content"
+        	    		    android:layout_width="fill_parent"
+            	    		android:text="Directorio"
+		            	    android:textSize="23sp"
+			                android:gravity="center_horizontal"/>
+			       </LinearLayout>
+ 
+			   </ViewFlipper>
         </RelativeLayout>
         
         <LinearLayout
