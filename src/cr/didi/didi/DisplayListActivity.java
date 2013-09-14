@@ -25,6 +25,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DisplayListActivity extends Activity {
+	
+	private static double latitud_cliente = 0;
+	private static double longitud_cliente = 0;
+	private static double longitud_cliente = 0;
 
 	//Creacion e iniciacion de las dos constantes utilizadas aqui para el paso
 	//hacia el view de GoogleMap
