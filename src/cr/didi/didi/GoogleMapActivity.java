@@ -8,10 +8,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
 
 public class GoogleMapActivity extends FragmentActivity {
 
+	private GoogleMap mMap;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +27,12 @@ public class GoogleMapActivity extends FragmentActivity {
 		Intent intent = getIntent();
 		String latitud= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_LAT);
 		String longitud= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_LNG);
+		
+		//Display of map's pin for client
+		Toast.makeText(getApplicationContext(), "Lat: "+latitud, Toast.LENGTH_LONG).show();
+		Toast.makeText(getApplicationContext(), "Lat: "+longitud, Toast.LENGTH_LONG).show();
+		
+		//pin over map
 		
 		//Display of the intent's content
 	    // Create the text view

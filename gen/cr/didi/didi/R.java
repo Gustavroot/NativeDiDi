@@ -206,7 +206,7 @@ containing a value of this type.
         public static final int boton_imagen_proceder_busqueda=0x7f05000b;
         public static final int hybrid=0x7f050004;
         public static final int lista_despliegue_search=0x7f050005;
-        public static final int map=0x7f050007;
+        public static final int mapclient=0x7f050007;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int progressBar1=0x7f05000c;

@@ -84,7 +84,7 @@ public class DisplayListActivity extends Activity {
 	            		catch(Exception e){
 	            			tipoprod="nou...";
 	            		}
-	            		Toast.makeText(getApplicationContext(), "Tipo producto " + tipoprod, Toast.LENGTH_LONG).show();
+	            		///Toast.makeText(getApplicationContext(), "Tipo producto " + tipoprod, Toast.LENGTH_LONG).show();
 	            	    //Toast.makeText(getApplicationContext(), "Click ListItem Number " + jsonArray.getJSONObject(i).get("tipoProducto").toString(), Toast.LENGTH_LONG).show();
 	            		//Toast.makeText(getApplicationContext(), "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
 	            	    clickeadoElementosLista();
@@ -145,7 +145,7 @@ public class DisplayListActivity extends Activity {
     	protected void onPostExecute(Double result){
     	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
     		pb.setVisibility(View.GONE);
-    		Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
+    		//Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
     	}
     	protected void onProgressUpdate(Integer... progress){
     	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
