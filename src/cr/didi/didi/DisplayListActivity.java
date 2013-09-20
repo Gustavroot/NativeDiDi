@@ -22,18 +22,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DisplayListActivity extends Activity {
 	
-	private static double latitud_cliente = 0;
-	private static double longitud_cliente = 0;
+	private static String latitud_cliente = "";
+	private static String longitud_cliente = "";
+	private static String nombre_cliente = "";
 	private static JSONArray jArray;
 
 	//Creacion e iniciacion de las dos constantes utilizadas aqui para el paso
 	//hacia el view de GoogleMap
 	public final static String EXTRA_MESSAGE_LAT = "com.example.myfirstapp.MESSAGE_LAT";
 	public final static String EXTRA_MESSAGE_LNG = "com.example.myfirstapp.MESSAGE_LNG";
+	//EXTRA_MESSAGE_NAME_CLIENT
+	public final static String EXTRA_MESSAGE_NAME_CLIENT = "com.example.myfirstapp.MESSAGE_NAME_CLIENT";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,17 +74,21 @@ public class DisplayListActivity extends Activity {
 	    		//Toast.makeText(DisplayListActivity.this, "no problem...", Toast.LENGTH_SHORT).show();
 	    		//Toast.makeText(DisplayListActivity.this, jsonArray.getJSONObject(i).get("nombreProducto").toString(), Toast.LENGTH_SHORT).show();
 	    		//jsonArray.getJSONObject(i);
-	            listContents.add("TP: "+jsonArray.getJSONObject(i).get("tipoProducto").toString()+"\n"+"NP: "+jsonArray.getJSONObject(i).get("nombreProducto").toString());
+	            listContents.add("NOMBRE: "+jsonArray.getJSONObject(i).get("nombre").toString()+"\n"+"DESCRIPCION: "+"\n"+"TELEFONO: "+jsonArray.getJSONObject(i).get("telefono").toString()+"\n"+"EMAIL: "+jsonArray.getJSONObject(i).get("email").toString());
 	            ListView myListView = (ListView) findViewById(R.id.lista_despliegue_search);
 	            myListView.setOnItemClickListener(new OnItemClickListener() {
 	            	@Override
 	            	public void onItemClick(AdapterView<?> parent, View view,	int position, long id) {
-	            		String tipoprod="";
+	            		//String tipoprod="";
 	            		try{
-	            			tipoprod=jArray.getJSONObject(position).get("tipoProducto").toString();
+	            			latitud_cliente=jArray.getJSONObject(position).get("latitud").toString();
+	            			longitud_cliente=jArray.getJSONObject(position).get("longitud").toString();
+	            			nombre_cliente=jArray.getJSONObject(position).get("nombre").toString();
 	            		}
 	            		catch(Exception e){
-	            			tipoprod="nou...";
+	            			latitud_cliente="0";
+	            			longitud_cliente="0";
+	            			nombre_cliente="";
 	            		}
 	            		///Toast.makeText(getApplicationContext(), "Tipo producto " + tipoprod, Toast.LENGTH_LONG).show();
 	            	    //Toast.makeText(getApplicationContext(), "Click ListItem Number " + jsonArray.getJSONObject(i).get("tipoProducto").toString(), Toast.LENGTH_LONG).show();
@@ -116,10 +122,11 @@ public class DisplayListActivity extends Activity {
     public void haciaGoogleMap() {
     	
     	Intent intent = new Intent(this, GoogleMapActivity.class);
-    	String latitud="9.23435";
-    	String longitud="-84.23435";
-    	intent.putExtra(EXTRA_MESSAGE_LAT, latitud);
-    	intent.putExtra(EXTRA_MESSAGE_LNG, longitud);
+    	//String latitud="9.23435";
+    	//String longitud="-84.23435";
+    	intent.putExtra(EXTRA_MESSAGE_LAT, latitud_cliente);
+    	intent.putExtra(EXTRA_MESSAGE_LNG, longitud_cliente);
+    	intent.putExtra(EXTRA_MESSAGE_NAME_CLIENT, nombre_cliente);
     	startActivity(intent);
     	
     	/*

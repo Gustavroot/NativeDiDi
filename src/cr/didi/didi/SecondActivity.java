@@ -44,8 +44,8 @@ public class SecondActivity extends Activity {
         pb.setVisibility(View.GONE);
         
         //Se agrega el codigo para poder hacer swipe
-        ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
-        vf.setOnTouchListener(new ListenerTouchViewFlipperSecondActivity());
+        //ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
+        //vf.setOnTouchListener(new ListenerTouchViewFlipperSecondActivity());
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class SecondActivity extends Activity {
     	//Toast.makeText(MainActivity.this, "http://tecmo.webfactional.com/didi/productos?idClienteParam="+message, Toast.LENGTH_SHORT).show();
 
     	DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
-    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/productos?idClienteParam="+message);
+    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/buscarcliente?palabraClave="+message+"&start=0&limit=25");
     	// Depends on your web service
     	httpget.setHeader("Content-type", "application/json");
     	InputStream inputStream = null;
@@ -190,7 +190,7 @@ public class SecondActivity extends Activity {
     	}
     }
     
-    
+    /*
     private class ListenerTouchViewFlipperSecondActivity implements View.OnTouchListener{
     	
         @Override
@@ -221,5 +221,6 @@ public class SecondActivity extends Activity {
             return false;
         }
     }
+    */
     
 }
