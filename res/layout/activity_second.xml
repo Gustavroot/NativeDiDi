@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".10"
+            android:layout_weight=".1"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:orientation="horizontal" >
@@ -41,15 +41,49 @@
                 android:scaleType="centerInside"
                 android:onClick="clickeadoAlBotonBusqueda"
                 />
-            
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" >
+            
+            <Button
+                android:id="@+id/a1"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+		        android:text="@string/button_taxis" />
+            <Button
+                android:id="@+id/a2"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+		        android:text="@string/button_eventos" />
+            <Button
+                android:id="@+id/a3"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+		        android:text="@string/button_reservas" />
+            <Button
+                android:id="@+id/a4"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+		        android:text="@string/button_directorio" />
+
+        </LinearLayout>
+        
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_weight=".65"
+            android:layout_weight=".61"
             android:background="@drawable/border"
             android:orientation="horizontal" >
             <ProgressBar
@@ -61,7 +95,6 @@
                 android:layout_marginTop="24dp"
                 />
 
-            <!--
                 <ViewFlipper android:id="@+id/viewFlipperSecondActivity"
                     android:layout_height="match_parent"
         			android:layout_width="match_parent" >
@@ -70,53 +103,57 @@
 			            android:layout_height="fill_parent"
 			            android:layout_width="fill_parent"
 			            android:orientation="vertical" >
-
+						<!--
 			            <TextView android:layout_height="wrap_content"
 		                      android:layout_width="fill_parent"
 		                      android:text="Taxis"
 		                      android:textSize="23sp"
 		                      android:gravity="center_horizontal"/>
+		                -->
+		                <ImageView
+			                android:layout_width="fill_parent"
+			                android:layout_height="fill_parent"
+			                android:src="@drawable/dides"
+			            />
 			        </LinearLayout>
 
 			        <LinearLayout
 			            android:layout_height="fill_parent"
 			            android:layout_width="fill_parent"
 			            android:orientation="vertical" >
-			 
+			            <!--
 			            <TextView android:layout_height="wrap_content"
 	        	              android:layout_width="fill_parent"
 	            	          android:text="Eventos"
 	                	      android:textSize="23sp"
 	                    	  android:gravity="center_horizontal"/>
+	                    -->
+	                    <ImageView
+			                android:layout_width="fill_parent"
+			                android:layout_height="fill_parent"
+			                android:src="@drawable/paint"
+			            />
 			        </LinearLayout>
 
 			        <LinearLayout
 			            android:layout_height="fill_parent"
 			            android:layout_width="fill_parent"
 			            android:orientation="vertical" >
-
+						<!--
 			            <TextView android:layout_height="wrap_content"
 		                      android:layout_width="fill_parent"
     		                  android:text="Reservas"
         		              android:textSize="23sp"
             		          android:gravity="center_horizontal"/>
+            		    -->
+            		    <ImageView
+			                android:layout_width="fill_parent"
+			                android:layout_height="fill_parent"
+			                android:src="@drawable/homer"
+			            />
 			        </LinearLayout>
         
-			        <LinearLayout
-            		    android:layout_height="fill_parent"
-		                android:layout_width="fill_parent"
-		                android:orientation="vertical" >
-	 
-			            <TextView android:layout_height="wrap_content"
-        	    		    android:layout_width="fill_parent"
-            	    		android:text="Directorio"
-		            	    android:textSize="23sp"
-			                android:gravity="center_horizontal"/>
-			       </LinearLayout>
- 
 			   </ViewFlipper>
-			   
-			    -->
         </RelativeLayout>
         
         <LinearLayout
@@ -126,7 +163,7 @@
             android:paddingRight="@dimen/activity_vertical_margin"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_weight=".25"
+            android:layout_weight=".23"
             android:orientation="horizontal" >
             
             <ImageButton

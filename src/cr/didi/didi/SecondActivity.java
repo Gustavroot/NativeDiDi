@@ -44,8 +44,8 @@ public class SecondActivity extends Activity {
         pb.setVisibility(View.GONE);
         
         //Se agrega el codigo para poder hacer swipe
-        //ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
-        //vf.setOnTouchListener(new ListenerTouchViewFlipperSecondActivity());
+        ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
+        vf.setOnTouchListener(new ListenerTouchViewFlipperSecondActivity());
 	}
 
 	/**
@@ -190,7 +190,6 @@ public class SecondActivity extends Activity {
     	}
     }
     
-    /*
     private class ListenerTouchViewFlipperSecondActivity implements View.OnTouchListener{
     	
         @Override
@@ -221,6 +220,4 @@ public class SecondActivity extends Activity {
             return false;
         }
     }
-    */
-    
 }

@@ -12,5 +12,9 @@
     <string name="title_activity_google_map">GoogleMapActivity</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="button_initial">Contin.</string>
+    <string name="button_taxis">Taxis</string>
+    <string name="button_eventos">Eventos</string>
+    <string name="button_reservas">Reservas</string>
+    <string name="button_directorio">Directorio</string>
 
 </resources>
