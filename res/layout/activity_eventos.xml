@@ -84,7 +84,7 @@
             android:layout_height="0dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_weight=".74"
+            android:layout_weight=".80"
             android:orientation="horizontal" >
             <ProgressBar
                 android:id="@+id/progressBar1"
@@ -94,36 +94,5 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="24dp"
                 />
-		    <fragment
-		        android:id="@+id/mapclienttaxi"
-		        android:layout_width="match_parent"
-		        android:layout_height="match_parent"
-		        class="com.google.android.gms.maps.SupportMapFragment" />
 		</RelativeLayout>
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight=".1"
-            android:orientation="horizontal" >
-                <Button
-                    android:layout_width="0dp"
-	                android:layout_weight=".2"
-    	            android:layout_height="match_parent"
-        	        android:scaleType="centerCrop"
-                	android:background="@null"
-			        android:text="@string/button_opciones" />
-                <Button
-                    android:layout_width="0dp"
-	                android:layout_weight=".2"
-    	            android:layout_height="match_parent"
-        	        android:scaleType="centerCrop"
-                	android:background="@null"
-			        android:text="@string/button_solicitud" />
-        </LinearLayout>
-        
 </LinearLayout>

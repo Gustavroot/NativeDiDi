@@ -2,6 +2,7 @@ package cr.didi.didi;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -211,6 +212,15 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	        Toast.makeText(this, "status changed", Toast.LENGTH_SHORT).show();
 	    }
 		//0000000000000000000000000000000000000000000000000000000000000000000000
+
+	    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+	    public void clickeadoAlBotonEventos(View view) {
+	    	Intent intent = new Intent(this, EventosActivity.class);
+	    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+	    	//String message = editText.getText().toString();
+	    	//intent.putExtra(EXTRA_MESSAGE, message);
+	    	startActivity(intent);
+	    }
 
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.

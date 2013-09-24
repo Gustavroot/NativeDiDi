@@ -199,6 +199,15 @@ public class SecondActivity extends Activity {
     	}
     }
     
+    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+    public void clickeadoAlBotonEventos(View view) {
+    	Intent intent = new Intent(this, EventosActivity.class);
+    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+    	//String message = editText.getText().toString();
+    	//intent.putExtra(EXTRA_MESSAGE, message);
+    	startActivity(intent);
+    }
+    
     private class ListenerTouchViewFlipperSecondActivity implements View.OnTouchListener{
     	
         @Override

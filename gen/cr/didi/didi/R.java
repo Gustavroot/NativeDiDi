@@ -198,43 +198,45 @@ containing a value of this type.
     }
     public static final class id {
         public static final int action_settings=0x7f050017;
-        public static final int boton_imagen_hacia_profile=0x7f050009;
+        public static final int boton_imagen_hacia_profile=0x7f050007;
         public static final int boton_imagen_menu_principal_1=0x7f050013;
         public static final int boton_imagen_menu_principal_2=0x7f050014;
         public static final int boton_imagen_menu_principal_3=0x7f050015;
         public static final int boton_imagen_menu_principal_4=0x7f050016;
-        public static final int boton_imagen_proceder_busqueda=0x7f05000b;
-        public static final int buttondirectoriomenuprinc=0x7f05000f;
-        public static final int buttoneventosmenuprinc=0x7f05000d;
-        public static final int buttonreservasmenuprinc=0x7f05000e;
-        public static final int buttontaxismenuprinc=0x7f05000c;
+        public static final int boton_imagen_proceder_busqueda=0x7f050009;
+        public static final int buttondirectoriomenuprinc=0x7f05000d;
+        public static final int buttoneventosmenuprinc=0x7f05000b;
+        public static final int buttonreservasmenuprinc=0x7f05000c;
+        public static final int buttontaxismenuprinc=0x7f05000a;
         public static final int hybrid=0x7f050004;
         public static final int lista_despliegue_search=0x7f050005;
-        public static final int mapclient=0x7f050007;
+        public static final int mapclient=0x7f05000f;
         public static final int mapclienttaxi=0x7f050011;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int progressBar1=0x7f050010;
+        public static final int progressBar1=0x7f05000e;
         public static final int progressBarOverList=0x7f050006;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
-        public static final int text_field_busqueda_inicio=0x7f05000a;
-        public static final int viewFlipper=0x7f050008;
+        public static final int text_field_busqueda_inicio=0x7f050008;
+        public static final int viewFlipper=0x7f050010;
         public static final int viewFlipperSecondActivity=0x7f050012;
     }
     public static final class layout {
         public static final int activity_display_list=0x7f030000;
-        public static final int activity_google_map=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_pedir_taxi=0x7f030003;
-        public static final int activity_second=0x7f030004;
+        public static final int activity_eventos=0x7f030001;
+        public static final int activity_google_map=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_pedir_taxi=0x7f030004;
+        public static final int activity_second=0x7f030005;
     }
     public static final class menu {
         public static final int display_list=0x7f090000;
-        public static final int google_map=0x7f090001;
-        public static final int main=0x7f090002;
-        public static final int pedir_taxi=0x7f090003;
-        public static final int second=0x7f090004;
+        public static final int eventos=0x7f090001;
+        public static final int google_map=0x7f090002;
+        public static final int main=0x7f090003;
+        public static final int pedir_taxi=0x7f090004;
+        public static final int second=0x7f090005;
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
@@ -329,6 +331,7 @@ containing a value of this type.
         public static final int string_buscar=0x7f060018;
         public static final int subtitulo_elemento_lista=0x7f06001b;
         public static final int title_activity_display_list=0x7f06001c;
+        public static final int title_activity_eventos=0x7f060027;
         public static final int title_activity_google_map=0x7f06001d;
         public static final int title_activity_pedir_taxi=0x7f060024;
         public static final int title_activity_second=0x7f06001e;
