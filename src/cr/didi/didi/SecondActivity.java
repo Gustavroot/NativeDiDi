@@ -173,6 +173,15 @@ public class SecondActivity extends Activity {
     	}
     }
     
+    public void pasarAViewPedirTaxi(View view) {
+    	//Paso al view de pedir taxi
+        Intent intent = new Intent(this, PedirTaxiActivity.class);
+        //EditText editText = (EditText) findViewById(R.id.edit_message);
+        //String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+    
     public void clickeadoAlBotonBusqueda(View view) {
     	String value=null;
     	int longValue=0;

@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
-    tools:context=".SecondActivity"
+    tools:context=".PedirTaxiActivity"
     android:orientation="vertical" >
 
         <LinearLayout
@@ -79,13 +79,12 @@
 
         </LinearLayout>
         
-        <RelativeLayout
+		<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_weight=".61"
-            android:background="@drawable/border"
+            android:layout_weight=".74"
             android:orientation="horizontal" >
             <ProgressBar
                 android:id="@+id/progressBar1"
@@ -95,67 +94,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="24dp"
                 />
-
-                <ViewFlipper android:id="@+id/viewFlipperSecondActivity"
-                    android:layout_height="match_parent"
-        			android:layout_width="match_parent" >
-
-			        <LinearLayout
-			            android:layout_height="fill_parent"
-			            android:layout_width="fill_parent"
-			            android:orientation="vertical" >
-						<!--
-			            <TextView android:layout_height="wrap_content"
-		                      android:layout_width="fill_parent"
-		                      android:text="Taxis"
-		                      android:textSize="23sp"
-		                      android:gravity="center_horizontal"/>
-		                -->
-		                <ImageView
-			                android:layout_width="fill_parent"
-			                android:layout_height="fill_parent"
-			                android:src="@drawable/dides"
-			            />
-			        </LinearLayout>
-
-			        <LinearLayout
-			            android:layout_height="fill_parent"
-			            android:layout_width="fill_parent"
-			            android:orientation="vertical" >
-			            <!--
-			            <TextView android:layout_height="wrap_content"
-	        	              android:layout_width="fill_parent"
-	            	          android:text="Eventos"
-	                	      android:textSize="23sp"
-	                    	  android:gravity="center_horizontal"/>
-	                    -->
-	                    <ImageView
-			                android:layout_width="fill_parent"
-			                android:layout_height="fill_parent"
-			                android:src="@drawable/paint"
-			            />
-			        </LinearLayout>
-
-			        <LinearLayout
-			            android:layout_height="fill_parent"
-			            android:layout_width="fill_parent"
-			            android:orientation="vertical" >
-						<!--
-			            <TextView android:layout_height="wrap_content"
-		                      android:layout_width="fill_parent"
-    		                  android:text="Reservas"
-        		              android:textSize="23sp"
-            		          android:gravity="center_horizontal"/>
-            		    -->
-            		    <ImageView
-			                android:layout_width="fill_parent"
-			                android:layout_height="fill_parent"
-			                android:src="@drawable/homer"
-			            />
-			        </LinearLayout>
-        
-			   </ViewFlipper>
-        </RelativeLayout>
+		    <fragment
+		        android:id="@+id/mapclienttaxi"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        class="com.google.android.gms.maps.SupportMapFragment" />
+		</RelativeLayout>
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -164,52 +108,22 @@
             android:paddingRight="@dimen/activity_vertical_margin"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_weight=".23"
+            android:layout_weight=".1"
             android:orientation="horizontal" >
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_1"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidtaxi"
-                android:background="@null"
-                />
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_2"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidexpress"
-                android:background="@null"
-                />
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_3"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidprofesionales"
-                android:background="@null"
-                />
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_4"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidreparaciones"
-                android:background="@null"
-                />
-            
-            
+                <Button
+                    android:layout_width="0dp"
+	                android:layout_weight=".2"
+    	            android:layout_height="match_parent"
+        	        android:scaleType="centerCrop"
+                	android:background="@null"
+			        android:text="@string/button_opciones" />
+                <Button
+                    android:layout_width="0dp"
+	                android:layout_weight=".2"
+    	            android:layout_height="match_parent"
+        	        android:scaleType="centerCrop"
+                	android:background="@null"
+			        android:text="@string/button_solicitud" />
         </LinearLayout>
-        
-        
         
 </LinearLayout>

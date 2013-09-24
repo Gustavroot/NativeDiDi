@@ -16,5 +16,8 @@
     <string name="button_eventos">Eventos</string>
     <string name="button_reservas">Reservas</string>
     <string name="button_directorio">Directorio</string>
+    <string name="title_activity_pedir_taxi">PedirTaxiActivity</string>
+    <string name="button_opciones">Opciones</string>
+    <string name="button_solicitud">Solicitud</string>
 
 </resources>

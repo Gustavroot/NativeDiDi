@@ -7,20 +7,22 @@
     <permission
         android:name="cr.didi.didi.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
-    <uses-permission android:name="cr.didi.didi.permission.MAPS_RECEIVE" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <!-- The following two permissions are not required to use
-        Google Maps Android API v2, but are recommended. -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="cr.didi.didi.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!--
+         The following two permissions are not required to use
+        Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -31,10 +33,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-    <meta-data
-        android:name="com.google.android.maps.v2.API_KEY"
-        android:value="AIzaSyBDaBtmKz5W6SShftVtb-4bnRXxFx-htwc"/>
-            
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBDaBtmKz5W6SShftVtb-4bnRXxFx-htwc" />
+
         <activity
             android:name="cr.didi.didi.MainActivity"
             android:label="@string/app_name" >
@@ -60,7 +62,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.DisplayListActivity" />
         </activity>
-
         <activity
             android:name="cr.didi.didi.SecondActivity"
             android:label="@string/title_activity_second"
@@ -68,6 +69,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.MainActivity" />
+        </activity>
+        <activity
+            android:name="cr.didi.didi.PedirTaxiActivity"
+            android:label="@string/title_activity_pedir_taxi"
+            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cr.didi.didi.SecondActivity" />
         </activity>
     </application>
 
