@@ -1,6 +1,7 @@
 package cr.didi.didi;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -11,27 +12,28 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.CancelableCallback;
 import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class PedirTaxiActivity extends FragmentActivity implements LocationListener, LocationSource{
 
-	private GoogleMap mMap;
+	private GoogleMap mMap2;
     //private LocationClient mLocationClient;
     //private Location mCurrentLocation;
     private OnLocationChangedListener mListener;
     private LocationManager locationManager;
-    private CameraUpdate cu;
+    //private CameraUpdate cu;
+    private String latActual="0";
+    private String lngActual="0";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,6 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
         
         
 		//Coding for map center
-    	String latActual="";
-    	String lngActual="";
 		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(locationManager != null)
         {
@@ -76,21 +76,25 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
         else
         {
             //Show some generic error dialog because something must have gone wrong with location manager.
-        	mMap.setLocationSource(this);
+        	mMap2.setLocationSource(this);
         }
 		//Toast.makeText(this, "Ajua.", Toast.LENGTH_SHORT).show();
 		//Toast.makeText(this, latActual, Toast.LENGTH_SHORT).show();
 		//Toast.makeText(this, lngActual, Toast.LENGTH_SHORT).show();
-		mMap.addMarker(new MarkerOptions()
-		.position(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual)))
-		.title("Pos. actual"));
 		
-
-		mMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))),new CancelableCallback(){
+		mMap2 = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapclienttaxi)).getMap();
+    	try{
+    		Marker markerPosActual2=mMap2.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))).title("Pos. actual"));
+    	}
+    	catch(Exception e){
+    		Context context = getApplicationContext();
+    		Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+    	}
+		mMap2.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))),new CancelableCallback(){
 	        @Override
 	        public void onFinish() {
 	            //Toast.makeText(getBaseContext(), "Centrado de mapa completado.", Toast.LENGTH_SHORT).show();
-	    		mMap.animateCamera(CameraUpdateFactory.zoomTo(14.0f), new CancelableCallback(){
+	    		mMap2.animateCamera(CameraUpdateFactory.zoomTo(14.0f), new CancelableCallback(){
 	    	        @Override
 	    	        public void onFinish() {
 	    	            //Toast.makeText(getBaseContext(), "Ajuste de zoom de mapa completado.", Toast.LENGTH_SHORT).show();
@@ -125,7 +129,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	        setUpMapIfNeeded();
 	        if(locationManager != null)
 	        {
-	            mMap.setMyLocationEnabled(true);
+	            mMap2.setMyLocationEnabled(true);
 	        }
 	    }
 	    /**
@@ -146,17 +150,17 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	     */
 	    private void setUpMapIfNeeded() {
 	        // Do a null check to confirm that we have not already instantiated the map.
-	        if (mMap == null)
+	        if (mMap2 == null)
 	        {
 	            // Try to obtain the map from the SupportMapFragment.
-	            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapclienttaxi)).getMap();
+	            mMap2 = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapclienttaxi)).getMap();
 	            // Check if we were successful in obtaining the map.
-	            if (mMap != null) 
+	            if (mMap2 != null) 
 	            {
 	                setUpMap();
 	            }
 	            //This is how you register the LocationSource
-	            mMap.setLocationSource(this);
+	            mMap2.setLocationSource(this);
 	        }
 	    }
 	    /**
@@ -166,7 +170,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	     */
 	    private void setUpMap() 
 	    {
-	        mMap.setMyLocationEnabled(true);
+	        mMap2.setMyLocationEnabled(true);
 	    }
 	    @Override
 	    public void activate(OnLocationChangedListener listener) 
@@ -185,7 +189,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	        {
 	            mListener.onLocationChanged(location);
 	            //Toast.makeText(getApplicationContext(), "Lat mia: "+location.getLatitude(), Toast.LENGTH_LONG).show();
-	            mMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude())));
+	            mMap2.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude())));
 	        }
 	    }
 	    @Override
