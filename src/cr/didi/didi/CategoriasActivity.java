@@ -161,6 +161,7 @@ public class CategoriasActivity extends Activity {
     	    while ((line = reader.readLine()) != null)
     	    {
     	        sb.append(line + "\n");
+    	        //
     	    }
     	    result = sb.toString();
     	    //Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
