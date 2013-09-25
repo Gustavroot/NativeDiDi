@@ -14,11 +14,13 @@
     <string name="button_initial">Contin.</string>
     <string name="button_taxis">Taxis</string>
     <string name="button_eventos">Eventos</string>
-    <string name="button_reservas">Reservas</string>
-    <string name="button_directorio">Directorio</string>
+    <string name="button_reservas">Reserv</string>
+    <string name="button_directorio">Direct</string>
     <string name="title_activity_pedir_taxi">PedirTaxiActivity</string>
     <string name="button_opciones">Opciones</string>
     <string name="button_solicitud">Solicitud</string>
     <string name="title_activity_eventos">EventosActivity</string>
+    <string name="title_activity_reservas">ReservasActivity</string>
+    <string name="title_activity_categorias">CategoriasActivity</string>
 
 </resources>

@@ -3,12 +3,16 @@ package cr.didi.didi;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -20,25 +24,101 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class EventosActivity extends Activity {
+public class CategoriasActivity extends Activity {
 	
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
 	private static float init_x = 0;
+	
+	private static String nombre_cliente = "";
+	private static JSONArray jArray;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_eventos);
+		setContentView(R.layout.activity_categorias);
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
         //Se mantiene oculta la barra de progreso desde el inicio
         ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
         pb.setVisibility(View.GONE);
+        
+		//Get intent
+		Intent intent = getIntent();
+		String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_CAT_REQUEST);
+		
+        
+	    // Create the text view
+	    TextView textView = new TextView(this);
+	    textView.setTextSize(40);
+	    textView.setText(result);
+
+	    //filling the list with products result
+	    try{
+	    	//Primero hay que convertir el string json en un diccionario
+	    	JSONObject json = new JSONObject(result);
+	    	//json.get("ptm");
+	    	//JSONArray jsonArray = new JSONArray(result);
+	    	JSONArray jsonArray = new JSONArray(json.get("ptm").toString());
+	    	jArray=jsonArray;
+	    	int length = jsonArray.length();
+	    	List<String> listContents = new ArrayList<String>(length);
+	    	for (int i = 0; i < length; i++)
+	        {
+	    		//Toast.makeText(DisplayListActivity.this, "no problem...", Toast.LENGTH_SHORT).show();
+	    		//Toast.makeText(DisplayListActivity.this, jsonArray.getJSONObject(i).get("nombreProducto").toString(), Toast.LENGTH_SHORT).show();
+	    		//jsonArray.getJSONObject(i);
+	            listContents.add("Cat.: "+jsonArray.getJSONObject(i).get("nombre").toString());
+	            ListView myListView = (ListView) findViewById(R.id.lista_despliegue_search);
+	            /*
+	            myListView.setOnItemClickListener(new OnItemClickListener() {
+	            	@Override
+	            	public void onItemClick(AdapterView<?> parent, View view,	int position, long id) {
+	            		//String tipoprod="";
+	            		try{
+	            			latitud_cliente=jArray.getJSONObject(position).get("latitud").toString();
+	            			longitud_cliente=jArray.getJSONObject(position).get("longitud").toString();
+	            			nombre_cliente=jArray.getJSONObject(position).get("nombre").toString();
+	            		}
+	            		catch(Exception e){
+	            			latitud_cliente="0";
+	            			longitud_cliente="0";
+	            			nombre_cliente="";
+	            		}
+	            		///Toast.makeText(getApplicationContext(), "Tipo producto " + tipoprod, Toast.LENGTH_LONG).show();
+	            	    //Toast.makeText(getApplicationContext(), "Click ListItem Number " + jsonArray.getJSONObject(i).get("tipoProducto").toString(), Toast.LENGTH_LONG).show();
+	            		//Toast.makeText(getApplicationContext(), "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
+	            	    clickeadoElementosLista();
+	                }
+	            });
+	            */
+	            myListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listContents));
+	        }
+	    	
+	    	//Toast.makeText(DisplayListActivity.this, json.get("ptm").toString(), Toast.LENGTH_SHORT).show();
+	    	
+		    // Set the text view as the activity layout
+		    //setContentView(textView);
+
+	    	//int length = jsonArray.length();
+	    	//List<String> listContents = new ArrayList<String>(length);
+	    	//for (int i = 0; i < length; i++)
+	        //{
+	        //  listContents.add(jsonArray.getString(i));
+	        //}
+	    	
+	    }
+	    catch(Exception e){}
 	}
 	
     /** Called when the user clicks the Send button */
@@ -79,7 +159,7 @@ public class EventosActivity extends Activity {
     	    result = sb.toString();
     	    //Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
     	} catch (Exception e) {
-    		Toast.makeText(EventosActivity.this, "error alguno...", Toast.LENGTH_SHORT).show();
+    		Toast.makeText(CategoriasActivity.this, "error alguno...", Toast.LENGTH_SHORT).show();
     	    // Oops
     	}
     	finally {
@@ -112,7 +192,6 @@ public class EventosActivity extends Activity {
     	*/
     }
 
-    
     private class MyAsyncTask extends AsyncTask<String, Integer, Double>{
     	@Override
     	protected Double doInBackground(String... params) {
@@ -131,7 +210,6 @@ public class EventosActivity extends Activity {
     	}
     }
     
-    
     public void clickeadoAlBotonBusqueda(View view) {
     	String value=null;
     	int longValue=0;
@@ -148,7 +226,6 @@ public class EventosActivity extends Activity {
     		new MyAsyncTask().execute(value);		
     	}
     }
-
 	
 	
     public void pasarAViewPedirTaxi(View view) {
@@ -160,6 +237,16 @@ public class EventosActivity extends Activity {
         startActivity(intent);
     }
     
+    
+    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+    public void clickeadoAlBotonEventos(View view) {
+    	Intent intent = new Intent(this, EventosActivity.class);
+    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+    	//String message = editText.getText().toString();
+    	//intent.putExtra(EXTRA_MESSAGE, message);
+    	startActivity(intent);
+    }
+    
     //Ejecucion que se le asigna al boton de Eventos para el menu principal
     public void clickeadoAlBotonReservas(View view) {
     	Intent intent = new Intent(this, ReservasActivity.class);
@@ -168,17 +255,7 @@ public class EventosActivity extends Activity {
     	//intent.putExtra(EXTRA_MESSAGE, message);
     	startActivity(intent);
     }
-    
-    //Ejecucion que se le asigna al boton de Eventos para el menu principal
-    public void clickeadoAlBotonDirectorio(View view) {
-    	Intent intent = new Intent(this, CategoriasActivity.class);
-    	//EditText editText = (EditText) findViewById(R.id.edit_message);
-    	//String message = editText.getText().toString();
-    	//intent.putExtra(EXTRA_MESSAGE, message);
-    	startActivity(intent);
-    }
-	
-	
+    	
 
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
@@ -193,7 +270,7 @@ public class EventosActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.eventos, menu);
+		getMenuInflater().inflate(R.menu.categorias, menu);
 		return true;
 	}
 

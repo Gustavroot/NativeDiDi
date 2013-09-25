@@ -13,6 +13,7 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -91,11 +92,12 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
     		Context context = getApplicationContext();
     		Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
     	}
-		mMap2.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))),new CancelableCallback(){
+    	//Center and zoom
+		mMap2.animateCamera(CameraUpdateFactory.zoomTo(14.0f), new CancelableCallback(){
 	        @Override
 	        public void onFinish() {
 	            //Toast.makeText(getBaseContext(), "Centrado de mapa completado.", Toast.LENGTH_SHORT).show();
-	    		mMap2.animateCamera(CameraUpdateFactory.zoomTo(14.0f), new CancelableCallback(){
+	    		mMap2.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))),new CancelableCallback(){
 	    	        @Override
 	    	        public void onFinish() {
 	    	            //Toast.makeText(getBaseContext(), "Ajuste de zoom de mapa completado.", Toast.LENGTH_SHORT).show();
@@ -169,7 +171,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	     * <p>
 	     * This should only be called once and when we are sure that {@link #mMap} is not null.
 	     */
-	    private void setUpMap() 
+	    private void setUpMap()
 	    {
 	        mMap2.setMyLocationEnabled(true);
 	    }
@@ -216,6 +218,24 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	    //Ejecucion que se le asigna al boton de Eventos para el menu principal
 	    public void clickeadoAlBotonEventos(View view) {
 	    	Intent intent = new Intent(this, EventosActivity.class);
+	    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+	    	//String message = editText.getText().toString();
+	    	//intent.putExtra(EXTRA_MESSAGE, message);
+	    	startActivity(intent);
+	    }
+	    
+	    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+	    public void clickeadoAlBotonReservas(View view) {
+	    	Intent intent = new Intent(this, ReservasActivity.class);
+	    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+	    	//String message = editText.getText().toString();
+	    	//intent.putExtra(EXTRA_MESSAGE, message);
+	    	startActivity(intent);
+	    }
+	    
+	    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+	    public void clickeadoAlBotonDirectorio(View view) {
+	    	Intent intent = new Intent(this, CategoriasActivity.class);
 	    	//EditText editText = (EditText) findViewById(R.id.edit_message);
 	    	//String message = editText.getText().toString();
 	    	//intent.putExtra(EXTRA_MESSAGE, message);

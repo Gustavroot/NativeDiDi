@@ -24,7 +24,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class EventosActivity extends Activity {
+public class ReservasActivity extends Activity {
 	
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
 	private static float init_x = 0;
@@ -32,7 +32,7 @@ public class EventosActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_eventos);
+		setContentView(R.layout.activity_reservas);
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
@@ -79,7 +79,7 @@ public class EventosActivity extends Activity {
     	    result = sb.toString();
     	    //Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
     	} catch (Exception e) {
-    		Toast.makeText(EventosActivity.this, "error alguno...", Toast.LENGTH_SHORT).show();
+    		Toast.makeText(ReservasActivity.this, "error alguno...", Toast.LENGTH_SHORT).show();
     	    // Oops
     	}
     	finally {
@@ -111,7 +111,6 @@ public class EventosActivity extends Activity {
     	builder.show();
     	*/
     }
-
     
     private class MyAsyncTask extends AsyncTask<String, Integer, Double>{
     	@Override
@@ -131,7 +130,6 @@ public class EventosActivity extends Activity {
     	}
     }
     
-    
     public void clickeadoAlBotonBusqueda(View view) {
     	String value=null;
     	int longValue=0;
@@ -148,8 +146,6 @@ public class EventosActivity extends Activity {
     		new MyAsyncTask().execute(value);		
     	}
     }
-
-	
 	
     public void pasarAViewPedirTaxi(View view) {
     	//Paso al view de pedir taxi
@@ -161,8 +157,8 @@ public class EventosActivity extends Activity {
     }
     
     //Ejecucion que se le asigna al boton de Eventos para el menu principal
-    public void clickeadoAlBotonReservas(View view) {
-    	Intent intent = new Intent(this, ReservasActivity.class);
+    public void clickeadoAlBotonEventos(View view) {
+    	Intent intent = new Intent(this, EventosActivity.class);
     	//EditText editText = (EditText) findViewById(R.id.edit_message);
     	//String message = editText.getText().toString();
     	//intent.putExtra(EXTRA_MESSAGE, message);
@@ -177,8 +173,6 @@ public class EventosActivity extends Activity {
     	//intent.putExtra(EXTRA_MESSAGE, message);
     	startActivity(intent);
     }
-	
-	
 
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
@@ -193,7 +187,7 @@ public class EventosActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.eventos, menu);
+		getMenuInflater().inflate(R.menu.reservas, menu);
 		return true;
 	}
 

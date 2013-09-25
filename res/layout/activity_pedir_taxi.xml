@@ -56,26 +56,30 @@
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-		        android:text="@string/button_taxis"/>
+                android:background="@null"
+                android:textColor="#FFFFFF"
+		        android:text="@string/button_taxis" />
             <Button
                 android:id="@+id/buttoneventosmenuprinc"
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-		        android:text="@string/button_eventos" 
+		        android:text="@string/button_eventos"
 		        android:onClick="clickeadoAlBotonEventos" />
             <Button
                 android:id="@+id/buttonreservasmenuprinc"
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-		        android:text="@string/button_reservas" />
+		        android:text="@string/button_reservas"
+		        android:onClick="clickeadoAlBotonReservas" />
             <Button
                 android:id="@+id/buttondirectoriomenuprinc"
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
-		        android:text="@string/button_directorio" />
+		        android:text="@string/button_directorio"
+		        android:onClick="clickeadoAlBotonDirectorio" />
 
         </LinearLayout>
         
@@ -108,7 +112,7 @@
             android:paddingRight="@dimen/activity_vertical_margin"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_weight=".1"
+            android:layout_weight=".06"
             android:orientation="horizontal" >
                 <Button
                     android:layout_width="0dp"
@@ -116,6 +120,7 @@
     	            android:layout_height="match_parent"
         	        android:scaleType="centerCrop"
                 	android:background="@null"
+                	android:textColor="#FFFFFF"
 			        android:text="@string/button_opciones" />
                 <Button
                     android:layout_width="0dp"
@@ -123,6 +128,7 @@
     	            android:layout_height="match_parent"
         	        android:scaleType="centerCrop"
                 	android:background="@null"
+                	android:textColor="#FFFFFF"
 			        android:text="@string/button_solicitud" />
         </LinearLayout>
         
