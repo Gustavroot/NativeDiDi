@@ -36,6 +36,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class CategoriasActivity extends Activity {
 	
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
+	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	private static float init_x = 0;
 	
 	private static String nombre_cliente = "";
@@ -56,6 +57,11 @@ public class CategoriasActivity extends Activity {
 		//Get intent
 		Intent intent = getIntent();
 		String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_CAT_REQUEST);
+		
+		//Get intent
+		String result2= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_EDIT_TEXT);
+	    EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+	    editText.setText(result2);
 		
         
 	    // Create the text view
@@ -170,6 +176,7 @@ public class CategoriasActivity extends Activity {
     	
     	Intent intent = new Intent(this, DisplayListActivity.class);
     	//string msg
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
     	
@@ -234,6 +241,9 @@ public class CategoriasActivity extends Activity {
         //EditText editText = (EditText) findViewById(R.id.edit_message);
         //String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
+        EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
         startActivity(intent);
     }
     
@@ -244,6 +254,9 @@ public class CategoriasActivity extends Activity {
     	//EditText editText = (EditText) findViewById(R.id.edit_message);
     	//String message = editText.getText().toString();
     	//intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
     }
     
@@ -253,6 +266,9 @@ public class CategoriasActivity extends Activity {
     	//EditText editText = (EditText) findViewById(R.id.edit_message);
     	//String message = editText.getText().toString();
     	//intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
     }
     	

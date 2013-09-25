@@ -28,6 +28,7 @@ public class ReservasActivity extends Activity {
 	
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
 	public final static String EXTRA_MESSAGE_CAT_REQUEST = "cr.didi.didi.MESSAGE_CAT_REQUEST";
+	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	private static float init_x = 0;
 
 	@Override
@@ -40,6 +41,12 @@ public class ReservasActivity extends Activity {
         //Se mantiene oculta la barra de progreso desde el inicio
         ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
         pb.setVisibility(View.GONE);
+        
+      //Get intent
+    	Intent intent = getIntent();
+    	String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_EDIT_TEXT);
+        EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        editText.setText(result);
 	}
 	
     /** Called when the user clicks the Send button */
@@ -91,6 +98,7 @@ public class ReservasActivity extends Activity {
     	
     	Intent intent = new Intent(this, DisplayListActivity.class);
     	//string msg
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
     	
@@ -195,6 +203,9 @@ public class ReservasActivity extends Activity {
     	Intent intent = new Intent(this, CategoriasActivity.class);
     	//EditText editText = (EditText) findViewById(R.id.edit_message);
     	//String message = editText.getText().toString();
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_CAT_REQUEST, result);
     	startActivity(intent);
     }
@@ -223,6 +234,9 @@ public class ReservasActivity extends Activity {
         //EditText editText = (EditText) findViewById(R.id.edit_message);
         //String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
         startActivity(intent);
     }
     
@@ -232,6 +246,9 @@ public class ReservasActivity extends Activity {
     	//EditText editText = (EditText) findViewById(R.id.edit_message);
     	//String message = editText.getText().toString();
     	//intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
     }
     
