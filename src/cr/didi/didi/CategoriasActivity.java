@@ -129,7 +129,7 @@ public class CategoriasActivity extends Activity {
     public void haciaListadoSubcategorias() {
     	//Request de las subcategorias
     	DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
-    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/subcategorias?idCategoria="+id_cat_cliente);
+    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/subcategorias?idCategoriaParam="+id_cat_cliente);
     	//Depends on your web service
     	httpget.setHeader("Content-type", "application/json");
     	InputStream inputStream = null;
@@ -164,6 +164,9 @@ public class CategoriasActivity extends Activity {
     	Intent intent = new Intent(this, SubcategoriasActivity.class);
     	//String latitud="9.23435";
     	//String longitud="-84.23435";
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_ID_CAT, id_cat_cliente);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
