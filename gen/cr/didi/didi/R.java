@@ -231,6 +231,7 @@ containing a value of this type.
         public static final int activity_pedir_taxi=0x7f030005;
         public static final int activity_reservas=0x7f030006;
         public static final int activity_second=0x7f030007;
+        public static final int activity_subcategorias=0x7f030008;
     }
     public static final class menu {
         public static final int categorias=0x7f090000;
@@ -241,6 +242,7 @@ containing a value of this type.
         public static final int pedir_taxi=0x7f090005;
         public static final int reservas=0x7f090006;
         public static final int second=0x7f090007;
+        public static final int subcategorias=0x7f090008;
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
@@ -341,6 +343,7 @@ containing a value of this type.
         public static final int title_activity_pedir_taxi=0x7f060024;
         public static final int title_activity_reservas=0x7f060028;
         public static final int title_activity_second=0x7f06001e;
+        public static final int title_activity_subcategorias=0x7f06002a;
         public static final int titulo_elemento_lista=0x7f06001a;
     }
     public static final class style {

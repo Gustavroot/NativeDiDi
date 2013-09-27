@@ -25,19 +25,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class CategoriasActivity extends Activity {
 	
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	private static float init_x = 0;
+	public final static String EXTRA_MESSAGE_ID_CAT = "com.example.myfirstapp.ID_CAT";
+	private static String id_cat_cliente = "";
 	
 	private static String nombre_cliente = "";
 	private static JSONArray jArray;
@@ -86,28 +88,23 @@ public class CategoriasActivity extends Activity {
 	    		//jsonArray.getJSONObject(i);
 	            listContents.add("Cat.: "+jsonArray.getJSONObject(i).get("nombre").toString());
 	            ListView myListView = (ListView) findViewById(R.id.lista_despliegue_search);
-	            /*
 	            myListView.setOnItemClickListener(new OnItemClickListener() {
 	            	@Override
 	            	public void onItemClick(AdapterView<?> parent, View view,	int position, long id) {
 	            		//String tipoprod="";
 	            		try{
-	            			latitud_cliente=jArray.getJSONObject(position).get("latitud").toString();
-	            			longitud_cliente=jArray.getJSONObject(position).get("longitud").toString();
-	            			nombre_cliente=jArray.getJSONObject(position).get("nombre").toString();
+	            			//Toast.makeText(getApplicationContext(), "Click ListItem Number " + jArray.getJSONObject(position).get("idCategoria").toString(), Toast.LENGTH_LONG).show();
+	            			id_cat_cliente=jArray.getJSONObject(position).get("idCategoria").toString();
+	            			clickeadoElementosLista();
 	            		}
 	            		catch(Exception e){
-	            			latitud_cliente="0";
-	            			longitud_cliente="0";
-	            			nombre_cliente="";
 	            		}
 	            		///Toast.makeText(getApplicationContext(), "Tipo producto " + tipoprod, Toast.LENGTH_LONG).show();
 	            	    //Toast.makeText(getApplicationContext(), "Click ListItem Number " + jsonArray.getJSONObject(i).get("tipoProducto").toString(), Toast.LENGTH_LONG).show();
 	            		//Toast.makeText(getApplicationContext(), "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
-	            	    clickeadoElementosLista();
+	            	    //clickeadoElementosLista();
 	                }
 	            });
-	            */
 	            myListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listContents));
 	        }
 	    	
@@ -126,6 +123,72 @@ public class CategoriasActivity extends Activity {
 	    }
 	    catch(Exception e){}
 	}
+
+	//--------------------------------------------------------------------------------------
+    /** Called when the user clicks the Send button */
+    public void haciaListadoSubcategorias() {
+    	
+    	Intent intent = new Intent(this, SubcategoriasActivity.class);
+    	//String latitud="9.23435";
+    	//String longitud="-84.23435";
+    	intent.putExtra(EXTRA_MESSAGE_ID_CAT, id_cat_cliente);
+    	startActivity(intent);
+    	
+    	/*
+    	int suma=0;
+    	for (int i = 0; i < 1000000000; i++)
+        {
+    		suma=suma+1;
+        }
+        */
+    	
+    	//Toast.makeText(getApplicationContext(), "Hacia google map...", Toast.LENGTH_LONG).show();
+    }
+
+
+    
+    private class MyAsyncTaskClickList extends AsyncTask<String, Integer, Double>{
+    	@Override
+    	protected Double doInBackground(String... params) {
+    		// TODO Auto-generated method stub
+    	    haciaListadoSubcategorias();
+    	    return null;
+    	}
+    	protected void onPostExecute(Double result){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		pb.setVisibility(View.GONE);
+    		//Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
+    	}
+    	protected void onProgressUpdate(Integer... progress){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    	    pb.setProgress(progress[0]);
+    	}
+    }
+    
+    public void clickeadoElementosLista() {
+    	//Toast.makeText(getApplicationContext(), "Previous...", Toast.LENGTH_LONG).show();
+		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+		pb.setVisibility(View.VISIBLE);
+		new MyAsyncTaskClickList().execute();		
+
+    	/*
+    	String value=null;
+    	int longValue=0;
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	value = editText.getText().toString();
+    	longValue=value.length();
+    	// TODO Auto-generated method stub
+    	if(longValue<1){
+    		// out of range
+    		Toast.makeText(this, "Por favor ingrese algo.", Toast.LENGTH_LONG).show();
+    	}else{
+    		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		pb.setVisibility(View.VISIBLE);
+    		new MyAsyncTask().execute(value);		
+    	}
+    	*/
+    }
+	//--------------------------------------------------------------------------------------
 	
     /** Called when the user clicks the Send button */
     public void haciaLaBusqueda() {

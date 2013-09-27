@@ -22,5 +22,6 @@
     <string name="title_activity_eventos">EventosActivity</string>
     <string name="title_activity_reservas">ReservasActivity</string>
     <string name="title_activity_categorias">CategoriasActivity</string>
+    <string name="title_activity_subcategorias">SubcategoriasActivity</string>
 
 </resources>

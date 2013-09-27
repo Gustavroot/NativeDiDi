@@ -53,11 +53,12 @@ public class DisplayListActivity extends Activity {
 		Intent intent = getIntent();
 		String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_RESULT_SEARCH);
 		
-        
+        /*
 	    // Create the text view
 	    TextView textView = new TextView(this);
 	    textView.setTextSize(40);
 	    textView.setText(result);
+	    */
 
 	    //filling the list with products result
 	    try{
