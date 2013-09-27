@@ -42,7 +42,6 @@
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -104,7 +103,7 @@
         </activity>
         <activity
             android:name="cr.didi.didi.SubcategoriasActivity"
-            android:label="@string/title_activity_subcategorias"
+            android:theme="@android:style/Theme.NoTitleBar" >
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

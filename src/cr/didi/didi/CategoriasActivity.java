@@ -127,11 +127,45 @@ public class CategoriasActivity extends Activity {
 	//--------------------------------------------------------------------------------------
     /** Called when the user clicks the Send button */
     public void haciaListadoSubcategorias() {
+    	//Request de las subcategorias
+    	DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
+    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/subcategorias?idCategoria="+id_cat_cliente);
+    	//Depends on your web service
+    	httpget.setHeader("Content-type", "application/json");
+    	InputStream inputStream = null;
+    	String result = null;
+    	try {
+    	    HttpResponse response = httpclient.execute(httpget);
+    		//Toast.makeText(MainActivity.this, "sin error", Toast.LENGTH_SHORT).show();
+    	    HttpEntity entity = response.getEntity();
+
+    	    inputStream = entity.getContent();
+    	    // json is UTF-8 by default
+    	    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
+    	    StringBuilder sb = new StringBuilder();
+
+    	    String line = null;
+    	    while ((line = reader.readLine()) != null)
+    	    {
+    	        sb.append(line + "\n");
+    	    }
+    	    result = sb.toString();
+    	    //Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+    	} catch (Exception e) {
+    		Toast.makeText(CategoriasActivity.this, "error alguno...", Toast.LENGTH_SHORT).show();
+    	    // Oops
+    	}
+    	finally {
+    		//Toast.makeText(MainActivity.this, "entro a finally...", Toast.LENGTH_SHORT).show();
+    	    try{if(inputStream != null)inputStream.close();}catch(Exception squish){}
+    	}
+
     	
     	Intent intent = new Intent(this, SubcategoriasActivity.class);
     	//String latitud="9.23435";
     	//String longitud="-84.23435";
     	intent.putExtra(EXTRA_MESSAGE_ID_CAT, id_cat_cliente);
+    	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
     	
     	/*
