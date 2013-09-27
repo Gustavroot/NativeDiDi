@@ -70,72 +70,79 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
         EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
         editText.setText(result);
         
-        
-		//Coding for map center
-		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if(locationManager != null)
-        {
-            boolean gpsIsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-            boolean networkIsEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-            if(gpsIsEnabled)
+        try{
+        	//Coding for map center
+    		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+            if(locationManager != null)
             {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000L, 10F, this);
-                //obtencion forzada de location
-                latActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude());
-                lngActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude());
-            }
-            else if(networkIsEnabled)
-            {
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000L, 10F, this);
-                //obtencion forzada de location
-                latActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude());
-                lngActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude());
+                boolean gpsIsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                boolean networkIsEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+                if(gpsIsEnabled)
+                {
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000L, 10F, this);
+                    //obtencion forzada de location
+                    latActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude());
+                    lngActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude());
+                }
+                else if(networkIsEnabled)
+                {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000L, 10F, this);
+                    //obtencion forzada de location
+                    latActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude());
+                    lngActual=String.valueOf(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude());
+                }
+                else
+                {
+                    //Show an error dialog that GPS is disabled...
+                	Toast.makeText(this, "GPS deshabilitado.", Toast.LENGTH_SHORT).show();
+                }
             }
             else
             {
-                //Show an error dialog that GPS is disabled...
-            	Toast.makeText(this, "GPS deshabilitado.", Toast.LENGTH_SHORT).show();
+                //Show some generic error dialog because something must have gone wrong with location manager.
+            	mMap2.setLocationSource(this);
             }
+    		//Toast.makeText(this, "Ajua.", Toast.LENGTH_SHORT).show();
+    		//Toast.makeText(this, latActual, Toast.LENGTH_SHORT).show();
+    		//Toast.makeText(this, lngActual, Toast.LENGTH_SHORT).show();
+    		
+    		mMap2 = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapclienttaxi)).getMap();
+        	try{
+        		Marker markerPosActual2=mMap2.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))).title("Pos. actual"));
+        	}
+        	catch(Exception e){
+        		Context context = getApplicationContext();
+        		Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+        	}
+        	//Center and zoom
+    		mMap2.animateCamera(CameraUpdateFactory.zoomTo(14.0f), new CancelableCallback(){
+    	        @Override
+    	        public void onFinish() {
+    	            //Toast.makeText(getBaseContext(), "Centrado de mapa completado.", Toast.LENGTH_SHORT).show();
+    	    		mMap2.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))),new CancelableCallback(){
+    	    	        @Override
+    	    	        public void onFinish() {
+    	    	            //Toast.makeText(getBaseContext(), "Ajuste de zoom de mapa completado.", Toast.LENGTH_SHORT).show();
+    	    	        }
+    	    	        @Override
+    	    	        public void onCancel() {
+    	    	            Toast.makeText(getBaseContext(), "Ajuste de zoom de mapa cancelado.", Toast.LENGTH_SHORT).show();
+    	    	        }
+    	    		});
+    	        }
+    	        @Override
+    	        public void onCancel() {
+    	            Toast.makeText(getBaseContext(), "Centrado de mapa cancelado.", Toast.LENGTH_SHORT).show();
+    	        }
+    		});
+    		setUpMapIfNeeded();
         }
-        else
-        {
-            //Show some generic error dialog because something must have gone wrong with location manager.
-        	mMap2.setLocationSource(this);
+        catch(Exception e){
+        	Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_SHORT).show();
         }
-		//Toast.makeText(this, "Ajua.", Toast.LENGTH_SHORT).show();
-		//Toast.makeText(this, latActual, Toast.LENGTH_SHORT).show();
-		//Toast.makeText(this, lngActual, Toast.LENGTH_SHORT).show();
+        
+        
 		
-		mMap2 = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapclienttaxi)).getMap();
-    	try{
-    		Marker markerPosActual2=mMap2.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))).title("Pos. actual"));
-    	}
-    	catch(Exception e){
-    		Context context = getApplicationContext();
-    		Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
-    	}
-    	//Center and zoom
-		mMap2.animateCamera(CameraUpdateFactory.zoomTo(14.0f), new CancelableCallback(){
-	        @Override
-	        public void onFinish() {
-	            //Toast.makeText(getBaseContext(), "Centrado de mapa completado.", Toast.LENGTH_SHORT).show();
-	    		mMap2.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(Double.parseDouble(latActual), Double.parseDouble(lngActual))),new CancelableCallback(){
-	    	        @Override
-	    	        public void onFinish() {
-	    	            //Toast.makeText(getBaseContext(), "Ajuste de zoom de mapa completado.", Toast.LENGTH_SHORT).show();
-	    	        }
-	    	        @Override
-	    	        public void onCancel() {
-	    	            Toast.makeText(getBaseContext(), "Ajuste de zoom de mapa cancelado.", Toast.LENGTH_SHORT).show();
-	    	        }
-	    		});
-	        }
-	        @Override
-	        public void onCancel() {
-	            Toast.makeText(getBaseContext(), "Centrado de mapa cancelado.", Toast.LENGTH_SHORT).show();
-	        }
-		});
-		setUpMapIfNeeded();
 	}
 		//0000000000000000000000000000000000000000000000000000000000000000000000
 		@Override
