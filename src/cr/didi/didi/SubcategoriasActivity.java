@@ -24,6 +24,8 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -34,8 +36,10 @@ public class SubcategoriasActivity extends Activity {
 	
 	private static JSONArray jArray;
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
+	public final static String EXTRA_MESSAGE_ID_SUBCAT = "cr.didi.didi.MESSAGE";
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	//public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
+	private static String id_subcat_cliente = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,14 +78,14 @@ public class SubcategoriasActivity extends Activity {
 	    		//jsonArray.getJSONObject(i);
 	            listContents.add("Subcat.: "+jsonArray.getJSONObject(i).get("nombre").toString());
 	            ListView myListView = (ListView) findViewById(R.id.lista_despliegue_search);
-	            /*
+	            //Agregado de listener a item tap
 	            myListView.setOnItemClickListener(new OnItemClickListener() {
 	            	@Override
 	            	public void onItemClick(AdapterView<?> parent, View view,	int position, long id) {
 	            		//String tipoprod="";
 	            		try{
 	            			//Toast.makeText(getApplicationContext(), "Click ListItem Number " + jArray.getJSONObject(position).get("idCategoria").toString(), Toast.LENGTH_LONG).show();
-	            			id_cat_cliente=jArray.getJSONObject(position).get("idCategoria").toString();
+	            			id_subcat_cliente=jArray.getJSONObject(position).get("idSubcategoria").toString();
 	            			clickeadoElementosLista();
 	            		}
 	            		catch(Exception e){
@@ -92,7 +96,6 @@ public class SubcategoriasActivity extends Activity {
 	            	    //clickeadoElementosLista();
 	                }
 	            });
-	            */
 	            myListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listContents));
 	        }
 	    	
@@ -111,6 +114,107 @@ public class SubcategoriasActivity extends Activity {
 	    }
 	    catch(Exception e){}
 	}
+	
+	//---------------------------------------------------------------------------
+    /** Called when the user clicks the Send button */
+    public void haciaListadoClientes() {
+    	//Request de las subcategorias
+    	DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
+    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/buscarcliente?idSubcategoriaParam="+id_subcat_cliente+"&start=0&limit=50");
+    	//Depends on your web service
+    	httpget.setHeader("Content-type", "application/json");
+    	InputStream inputStream = null;
+    	String result = null;
+    	try {
+    	    HttpResponse response = httpclient.execute(httpget);
+    		//Toast.makeText(MainActivity.this, "sin error", Toast.LENGTH_SHORT).show();
+    	    HttpEntity entity = response.getEntity();
+
+    	    inputStream = entity.getContent();
+    	    // json is UTF-8 by default
+    	    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
+    	    StringBuilder sb = new StringBuilder();
+
+    	    String line = null;
+    	    while ((line = reader.readLine()) != null)
+    	    {
+    	        sb.append(line + "\n");
+    	    }
+    	    result = sb.toString();
+    	    //Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+    	} catch (Exception e) {
+    		Toast.makeText(SubcategoriasActivity.this, "error alguno...", Toast.LENGTH_SHORT).show();
+    	    // Oops
+    	}
+    	finally {
+    		//Toast.makeText(MainActivity.this, "entro a finally...", Toast.LENGTH_SHORT).show();
+    	    try{if(inputStream != null)inputStream.close();}catch(Exception squish){}
+    	}
+
+    	
+    	Intent intent = new Intent(this, DisplayListActivity.class);
+    	//String latitud="9.23435";
+    	//String longitud="-84.23435";
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+    	intent.putExtra(EXTRA_MESSAGE_ID_SUBCAT, id_subcat_cliente);
+    	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
+    	startActivity(intent);
+    	
+    	/*
+    	int suma=0;
+    	for (int i = 0; i < 1000000000; i++)
+        {
+    		suma=suma+1;
+        }
+        */
+    	
+    	//Toast.makeText(getApplicationContext(), "Hacia google map...", Toast.LENGTH_LONG).show();
+    }
+
+    private class MyAsyncTaskClickList extends AsyncTask<String, Integer, Double>{
+    	@Override
+    	protected Double doInBackground(String... params) {
+    		// TODO Auto-generated method stub
+    	    haciaListadoClientes();
+    	    return null;
+    	}
+    	protected void onPostExecute(Double result){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		pb.setVisibility(View.GONE);
+    		//Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
+    	}
+    	protected void onProgressUpdate(Integer... progress){
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    	    pb.setProgress(progress[0]);
+    	}
+    }
+    
+    public void clickeadoElementosLista() {
+    	//Toast.makeText(getApplicationContext(), "Previous...", Toast.LENGTH_LONG).show();
+		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+		pb.setVisibility(View.VISIBLE);
+		new MyAsyncTaskClickList().execute();		
+
+    	/*
+    	String value=null;
+    	int longValue=0;
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	value = editText.getText().toString();
+    	longValue=value.length();
+    	// TODO Auto-generated method stub
+    	if(longValue<1){
+    		// out of range
+    		Toast.makeText(this, "Por favor ingrese algo.", Toast.LENGTH_LONG).show();
+    	}else{
+    		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		pb.setVisibility(View.VISIBLE);
+    		new MyAsyncTask().execute(value);		
+    	}
+    	*/
+    }
+	//---------------------------------------------------------------------------
 	
 	
     /** Called when the user clicks the Send button */
@@ -220,6 +324,48 @@ public class SubcategoriasActivity extends Activity {
     		new MyAsyncTask().execute(value);		
     	}
     }
+    
+    public void pasarAViewPedirTaxi(View view) {
+    	//Paso al view de pedir taxi
+        Intent intent = new Intent(this, PedirTaxiActivity.class);
+        //EditText editText = (EditText) findViewById(R.id.edit_message);
+        //String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+        try{
+        	startActivity(intent);
+        }
+        catch(Exception e){
+        	Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+        }
+    }
+    
+    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+    public void clickeadoAlBotonEventos(View view) {
+    	Intent intent = new Intent(this, EventosActivity.class);
+    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+    	//String message = editText.getText().toString();
+    	//intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+    	startActivity(intent);
+    }
+    
+    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+    public void clickeadoAlBotonReservas(View view) {
+    	Intent intent = new Intent(this, ReservasActivity.class);
+    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+    	//String message = editText.getText().toString();
+    	//intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+    	startActivity(intent);
+    }
+
 
 
 	/**

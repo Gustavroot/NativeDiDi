@@ -237,7 +237,12 @@ public class ReservasActivity extends Activity {
     	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
-        startActivity(intent);
+        try{
+        	startActivity(intent);
+        }
+        catch(Exception e){
+        	Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+        }
     }
     
     //Ejecucion que se le asigna al boton de Eventos para el menu principal
