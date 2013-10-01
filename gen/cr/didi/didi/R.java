@@ -223,26 +223,28 @@ containing a value of this type.
         public static final int viewFlipperSecondActivity=0x7f050012;
     }
     public static final class layout {
-        public static final int activity_categorias=0x7f030000;
-        public static final int activity_display_list=0x7f030001;
-        public static final int activity_eventos=0x7f030002;
-        public static final int activity_google_map=0x7f030003;
-        public static final int activity_main=0x7f030004;
-        public static final int activity_pedir_taxi=0x7f030005;
-        public static final int activity_reservas=0x7f030006;
-        public static final int activity_second=0x7f030007;
-        public static final int activity_subcategorias=0x7f030008;
+        public static final int activity_buffer=0x7f030000;
+        public static final int activity_categorias=0x7f030001;
+        public static final int activity_display_list=0x7f030002;
+        public static final int activity_eventos=0x7f030003;
+        public static final int activity_google_map=0x7f030004;
+        public static final int activity_main=0x7f030005;
+        public static final int activity_pedir_taxi=0x7f030006;
+        public static final int activity_reservas=0x7f030007;
+        public static final int activity_second=0x7f030008;
+        public static final int activity_subcategorias=0x7f030009;
     }
     public static final class menu {
-        public static final int categorias=0x7f090000;
-        public static final int display_list=0x7f090001;
-        public static final int eventos=0x7f090002;
-        public static final int google_map=0x7f090003;
-        public static final int main=0x7f090004;
-        public static final int pedir_taxi=0x7f090005;
-        public static final int reservas=0x7f090006;
-        public static final int second=0x7f090007;
-        public static final int subcategorias=0x7f090008;
+        public static final int buffer=0x7f090000;
+        public static final int categorias=0x7f090001;
+        public static final int display_list=0x7f090002;
+        public static final int eventos=0x7f090003;
+        public static final int google_map=0x7f090004;
+        public static final int main=0x7f090005;
+        public static final int pedir_taxi=0x7f090006;
+        public static final int reservas=0x7f090007;
+        public static final int second=0x7f090008;
+        public static final int subcategorias=0x7f090009;
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
@@ -334,8 +336,10 @@ containing a value of this type.
          */
         public static final int common_signin_button_text_long=0x7f06000e;
         public static final int hello_world=0x7f060017;
+        public static final int imagebuttonstr=0x7f06002c;
         public static final int string_buscar=0x7f060018;
         public static final int subtitulo_elemento_lista=0x7f06001b;
+        public static final int title_activity_buffer=0x7f06002b;
         public static final int title_activity_categorias=0x7f060029;
         public static final int title_activity_display_list=0x7f06001c;
         public static final int title_activity_eventos=0x7f060027;

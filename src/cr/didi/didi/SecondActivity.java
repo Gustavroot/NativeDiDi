@@ -33,35 +33,6 @@ public class SecondActivity extends Activity {
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	private static float init_x = 0;
 
-    private class ListenerTouchViewFlipperSecondActivity implements View.OnTouchListener{
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
-
-            switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: //Cuando el usuario toca la pantalla por primera vez
-                init_x=(float)event.getX();
-                //Toast.makeText(MainActivity.this, "X position: "+init_x, Toast.LENGTH_SHORT).show();
-                return true;
-            case MotionEvent.ACTION_UP: //Cuando el usuario deja de presionar
-                float distance =init_x-(float)event.getX();
-            	//Toast.makeText(MainActivity.this, "X position: "+event.getX(), Toast.LENGTH_SHORT).show();
-            	//Toast.makeText(MainActivity.this, "X position-2: "+(float)event.getX(), Toast.LENGTH_SHORT).show();
-            	//Toast.makeText(MainActivity.this, "X position: "+distance, Toast.LENGTH_SHORT).show();
-                if(distance>0)
-                {
-                     vf.showNext();
-                }
-                if(distance<0)
-                {
-                     vf.showPrevious();
-                }
-            default:
-                break;
-            }
-            return false;
-        }
-    }
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +42,8 @@ public class SecondActivity extends Activity {
 		setupActionBar();
 		
         //Se mantiene oculta la barra de progreso desde el inicio
-        //ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
-        //pb.setVisibility(View.GONE);
+        ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+        pb.setVisibility(View.GONE);
         
         //Se agrega el codigo para poder hacer swipe
         ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
@@ -113,6 +84,7 @@ public class SecondActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	
     /** Called when the user clicks the Send button */
     public void haciaLaBusqueda() {
     	//System.out.print("La cosa.");
@@ -327,5 +299,35 @@ public class SecondActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_CAT_REQUEST, result);
     	startActivity(intent);
+    }
+    
+    private class ListenerTouchViewFlipperSecondActivity implements View.OnTouchListener{
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
+
+            switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: //Cuando el usuario toca la pantalla por primera vez
+                init_x=(float)event.getX();
+                //Toast.makeText(MainActivity.this, "X position: "+init_x, Toast.LENGTH_SHORT).show();
+                return true;
+            case MotionEvent.ACTION_UP: //Cuando el usuario deja de presionar
+                float distance =init_x-(float)event.getX();
+            	//Toast.makeText(MainActivity.this, "X position: "+event.getX(), Toast.LENGTH_SHORT).show();
+            	//Toast.makeText(MainActivity.this, "X position-2: "+(float)event.getX(), Toast.LENGTH_SHORT).show();
+            	//Toast.makeText(MainActivity.this, "X position: "+distance, Toast.LENGTH_SHORT).show();
+                if(distance>0)
+                {
+                     vf.showNext();
+                }
+                if(distance<0)
+                {
+                     vf.showPrevious();
+                }
+            default:
+                break;
+            }
+            return false;
+        }
     }
 }

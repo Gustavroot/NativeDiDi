@@ -26,7 +26,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="16" />
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -42,12 +42,13 @@
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="cr.didi.didi.DisplayListActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_display_list"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -55,7 +56,7 @@
         </activity>
         <activity
             android:name="cr.didi.didi.GoogleMapActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_google_map"
             android:parentActivityName="cr.didi.didi.DisplayListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -63,7 +64,7 @@
         </activity>
         <activity
             android:name="cr.didi.didi.SecondActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_second"
             android:parentActivityName="cr.didi.didi.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -71,7 +72,7 @@
         </activity>
         <activity
             android:name="cr.didi.didi.PedirTaxiActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_pedir_taxi"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -79,7 +80,7 @@
         </activity>
         <activity
             android:name="cr.didi.didi.EventosActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_eventos"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -87,7 +88,7 @@
         </activity>
         <activity
             android:name="cr.didi.didi.ReservasActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_reservas"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -95,7 +96,7 @@
         </activity>
         <activity
             android:name="cr.didi.didi.CategoriasActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_categorias"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -103,12 +104,19 @@
         </activity>
         <activity
             android:name="cr.didi.didi.SubcategoriasActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:label="@string/title_activity_subcategorias"
+            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cr.didi.didi.SecondActivity" />
+        </activity>
+        <activity
+            android:name="cr.didi.didi.BufferActivity"
+            android:label="@string/title_activity_buffer"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
     </application>
-
 </manifest>

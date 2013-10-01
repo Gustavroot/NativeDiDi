@@ -22,6 +22,7 @@
                 android:id="@+id/boton_imagen_hacia_profile"
                 android:layout_width="0dp"
                 android:layout_weight=".15"
+                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
                 android:background="@drawable/configuser"
                 />
@@ -36,6 +37,7 @@
                 android:id="@+id/boton_imagen_proceder_busqueda"
                 android:layout_width="0dp"
                 android:layout_weight=".25"
+                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
                 android:background="@drawable/logoddflat"
                 android:scaleType="centerInside"
@@ -85,8 +87,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_weight=".61"
             android:background="@drawable/border"
             android:orientation="horizontal" >
@@ -109,6 +109,7 @@
 			                android:layout_width="fill_parent"
 			                android:layout_height="fill_parent"
 			                android:src="@drawable/dides"
+			                android:contentDescription="@string/imagebuttonstr"
 			            />
 			        </LinearLayout>
 
@@ -127,6 +128,7 @@
 			                android:layout_width="fill_parent"
 			                android:layout_height="fill_parent"
 			                android:src="@drawable/paint"
+			                android:contentDescription="@string/imagebuttonstr"
 			            />
 			        </LinearLayout>
 
@@ -145,6 +147,7 @@
 			                android:layout_width="fill_parent"
 			                android:layout_height="fill_parent"
 			                android:src="@drawable/homer"
+			                android:contentDescription="@string/imagebuttonstr"
 			            />
 			        </LinearLayout>
         
@@ -164,8 +167,6 @@
             android:layout_height="0dp"
             android:paddingLeft="@dimen/activity_vertical_margin"
             android:paddingRight="@dimen/activity_vertical_margin"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_weight=".19"
             android:orientation="horizontal" >
             
@@ -173,6 +174,7 @@
                 android:id="@+id/boton_imagen_menu_principal_1"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
+                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidtaxi"
@@ -183,6 +185,7 @@
                 android:id="@+id/boton_imagen_menu_principal_2"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
+                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidexpress"
@@ -193,6 +196,7 @@
                 android:id="@+id/boton_imagen_menu_principal_3"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
+                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidprofesionales"
@@ -203,6 +207,7 @@
                 android:id="@+id/boton_imagen_menu_principal_4"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
+                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidreparaciones"

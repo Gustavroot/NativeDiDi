@@ -23,5 +23,8 @@
     <string name="title_activity_reservas">ReservasActivity</string>
     <string name="title_activity_categorias">CategoriasActivity</string>
     <string name="title_activity_subcategorias">SubcategoriasActivity</string>
+    <string name="title_activity_buffer">BufferActivity</string>
+    <string name="imagebuttonstr">ImageButton</string>
+    
 
 </resources>
