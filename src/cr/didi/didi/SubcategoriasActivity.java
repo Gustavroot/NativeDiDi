@@ -48,6 +48,9 @@ public class SubcategoriasActivity extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
+		//Esta linea me permite hacer la transicion con ingreso lateral, y no desvanecida
+		overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+		
         //Se mantiene oculta la barra de progreso desde el inicio
         ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
         pb.setVisibility(View.GONE);
@@ -161,6 +164,7 @@ public class SubcategoriasActivity extends Activity {
     	intent.putExtra(EXTRA_MESSAGE_ID_SUBCAT, id_subcat_cliente);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	
     	/*
     	int suma=0;
@@ -270,6 +274,7 @@ public class SubcategoriasActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	
     	//Put up the Yes/No message box
     	/**
@@ -336,6 +341,7 @@ public class SubcategoriasActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
         try{
         	startActivity(intent);
+        	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         }
         catch(Exception e){
         	Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
@@ -352,6 +358,7 @@ public class SubcategoriasActivity extends Activity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     
     //Ejecucion que se le asigna al boton de Eventos para el menu principal
@@ -364,6 +371,7 @@ public class SubcategoriasActivity extends Activity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 
 

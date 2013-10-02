@@ -101,6 +101,7 @@ public class ReservasActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	
     	//Put up the Yes/No message box
     	/**
@@ -208,6 +209,7 @@ public class ReservasActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_CAT_REQUEST, result);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 
     
@@ -239,6 +241,7 @@ public class ReservasActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
         try{
         	startActivity(intent);
+        	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         }
         catch(Exception e){
         	Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
@@ -255,6 +258,7 @@ public class ReservasActivity extends Activity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     
 

@@ -118,5 +118,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
+        <activity
+            android:name="cr.didi.didi.DecripcionEmpresaActivity"
+            android:label="@string/title_activity_decripcion_empresa"
+            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cr.didi.didi.SecondActivity" />
+        </activity>
     </application>
+
 </manifest>

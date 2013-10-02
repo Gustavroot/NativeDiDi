@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class SecondActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_second);
 		// Show the Up button in the action bar.
 		setupActionBar();
@@ -134,6 +136,7 @@ public class SecondActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	
     	//Put up the Yes/No message box
     	/**
@@ -202,6 +205,7 @@ public class SecondActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
         try{
         	startActivity(intent);
+        	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         }
         catch(Exception e){
         	Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
@@ -235,6 +239,7 @@ public class SecondActivity extends Activity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     
     //Ejecucion que se le asigna al boton de Eventos para el menu principal
@@ -247,6 +252,7 @@ public class SecondActivity extends Activity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     
     //Ejecucion que se le asigna al boton de Eventos para el menu principal
@@ -299,6 +305,7 @@ public class SecondActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_CAT_REQUEST, result);
     	startActivity(intent);
+    	//overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     
     private class ListenerTouchViewFlipperSecondActivity implements View.OnTouchListener{

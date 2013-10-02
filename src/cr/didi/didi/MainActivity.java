@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.ViewFlipper;
 
 public class MainActivity extends Activity {
@@ -15,6 +16,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipper);
@@ -57,6 +59,7 @@ public class MainActivity extends Activity {
         //String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     
     private class ListenerTouchViewFlipper implements View.OnTouchListener{

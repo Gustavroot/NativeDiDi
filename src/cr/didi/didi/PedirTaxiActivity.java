@@ -254,6 +254,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	        String message = editText.getText().toString();
 	        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
 	    	startActivity(intent);
+	    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 	    }
 	    
 	    //Ejecucion que se le asigna al boton de Eventos para el menu principal
@@ -266,6 +267,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	        String message = editText.getText().toString();
 	        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
 	    	startActivity(intent);
+	    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 	    }
 	    
 	    
@@ -318,6 +320,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
 	    	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
 	    	startActivity(intent);
+	    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 	    	
 	    	//Put up the Yes/No message box
 	    	/**
@@ -441,6 +444,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
 	    	intent.putExtra(EXTRA_MESSAGE_CAT_REQUEST, result);
 	    	startActivity(intent);
+	    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 	    }
 
 	    

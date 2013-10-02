@@ -21,7 +21,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 public class DisplayListActivity extends Activity {
 	
@@ -48,6 +47,9 @@ public class DisplayListActivity extends Activity {
 		
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		//Esta linea me permite hacer la transicion con ingreso lateral, y no desvanecida
+		overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 		
 		//Get intent
 		Intent intent = getIntent();
@@ -122,13 +124,14 @@ public class DisplayListActivity extends Activity {
     /** Called when the user clicks the Send button */
     public void haciaGoogleMap() {
     	
-    	Intent intent = new Intent(this, GoogleMapActivity.class);
+    	Intent intent = new Intent(this, DecripcionEmpresaActivity.class);
     	//String latitud="9.23435";
     	//String longitud="-84.23435";
     	intent.putExtra(EXTRA_MESSAGE_LAT, latitud_cliente);
     	intent.putExtra(EXTRA_MESSAGE_LNG, longitud_cliente);
     	intent.putExtra(EXTRA_MESSAGE_NAME_CLIENT, nombre_cliente);
     	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	
     	/*
     	int suma=0;

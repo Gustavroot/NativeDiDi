@@ -25,6 +25,7 @@
     <string name="title_activity_subcategorias">SubcategoriasActivity</string>
     <string name="title_activity_buffer">BufferActivity</string>
     <string name="imagebuttonstr">ImageButton</string>
-    
+    <string name="title_activity_decripcion_empresa">DecripcionEmpresaActivity</string>
+    <string name="button_hacia_map">Mapa</string>
 
 </resources>
