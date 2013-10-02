@@ -48,7 +48,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.DisplayListActivity"
-            android:label="@string/title_activity_display_list"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -56,7 +56,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.GoogleMapActivity"
-            android:label="@string/title_activity_google_map"
+            android:label=""
             android:parentActivityName="cr.didi.didi.DisplayListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -64,7 +64,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.SecondActivity"
-            android:label="@string/title_activity_second"
+            android:label=""
             android:parentActivityName="cr.didi.didi.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -72,7 +72,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.PedirTaxiActivity"
-            android:label="@string/title_activity_pedir_taxi"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -80,7 +80,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.EventosActivity"
-            android:label="@string/title_activity_eventos"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -88,7 +88,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.ReservasActivity"
-            android:label="@string/title_activity_reservas"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -96,7 +96,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.CategoriasActivity"
-            android:label="@string/title_activity_categorias"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -104,7 +104,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.SubcategoriasActivity"
-            android:label="@string/title_activity_subcategorias"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -112,7 +112,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.BufferActivity"
-            android:label="@string/title_activity_buffer"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -120,7 +120,7 @@
         </activity>
         <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.DecripcionEmpresaActivity"
-            android:label="@string/title_activity_decripcion_empresa"
+            android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
