@@ -37,7 +37,7 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBDaBtmKz5W6SShftVtb-4bnRXxFx-htwc" />
 
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.MainActivity"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
@@ -46,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.DisplayListActivity"
             android:label="@string/title_activity_display_list"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -54,7 +54,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.GoogleMapActivity"
             android:label="@string/title_activity_google_map"
             android:parentActivityName="cr.didi.didi.DisplayListActivity" >
@@ -62,7 +62,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.DisplayListActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.SecondActivity"
             android:label="@string/title_activity_second"
             android:parentActivityName="cr.didi.didi.MainActivity" >
@@ -70,7 +70,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.MainActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.PedirTaxiActivity"
             android:label="@string/title_activity_pedir_taxi"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -78,7 +78,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.EventosActivity"
             android:label="@string/title_activity_eventos"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -86,7 +86,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.ReservasActivity"
             android:label="@string/title_activity_reservas"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -94,7 +94,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.CategoriasActivity"
             android:label="@string/title_activity_categorias"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -102,7 +102,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.SubcategoriasActivity"
             android:label="@string/title_activity_subcategorias"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -110,7 +110,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.BufferActivity"
             android:label="@string/title_activity_buffer"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -118,7 +118,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
             android:name="cr.didi.didi.DecripcionEmpresaActivity"
             android:label="@string/title_activity_decripcion_empresa"
             android:parentActivityName="cr.didi.didi.SecondActivity" >
@@ -127,5 +127,4 @@
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
     </application>
-
 </manifest>
