@@ -37,9 +37,11 @@ public class SubcategoriasActivity extends Activity {
 	private static JSONArray jArray;
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
 	public final static String EXTRA_MESSAGE_ID_SUBCAT = "cr.didi.didi.MESSAGE";
+	public final static String EXTRA_MESSAGE_CAT_CLIENTE = "cr.didi.didi.MESSAGE_CAT_CLIENTE";
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	//public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	private static String id_subcat_cliente = "";
+	private static String cat_cliente = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,10 @@ public class SubcategoriasActivity extends Activity {
 	            		try{
 	            			//Toast.makeText(getApplicationContext(), "Click ListItem Number " + jArray.getJSONObject(position).get("idCategoria").toString(), Toast.LENGTH_LONG).show();
 	            			id_subcat_cliente=jArray.getJSONObject(position).get("idSubcategoria").toString();
+	            			//Toast.makeText(SubcategoriasActivity.this, jArray.getJSONObject(position).get("idCategoria").toString(), Toast.LENGTH_SHORT).show();
+	            			//MainActivity.jObjectCategorias.getStrint();
+	            			//Toast.makeText(SubcategoriasActivity.this, MainActivity.jObjectCategorias.getString(jArray.getJSONObject(position).get("idCategoria").toString()), Toast.LENGTH_SHORT).show();
+	            			cat_cliente=MainActivity.jObjectCategorias.getString(jArray.getJSONObject(position).get("idCategoria").toString());
 	            			clickeadoElementosLista();
 	            		}
 	            		catch(Exception e){
@@ -163,6 +169,7 @@ public class SubcategoriasActivity extends Activity {
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_ID_SUBCAT, id_subcat_cliente);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
+    	intent.putExtra(EXTRA_MESSAGE_CAT_CLIENTE, cat_cliente);
     	startActivity(intent);
     	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	
@@ -378,9 +385,9 @@ public class SubcategoriasActivity extends Activity {
 
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
-	 */
+	*/
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupActionBar() {
+	private void setupActionBar(){
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}

@@ -77,6 +77,7 @@ int id boton_imagen_menu_principal_4 0x7f060016
 int id boton_imagen_proceder_busqueda 0x7f060007
 int id buttondirectoriomenuprinc 0x7f06000b
 int id buttoneventosmenuprinc 0x7f060009
+int id buttonlabelcatclientes 0x7f06000e
 int id buttonreservasmenuprinc 0x7f06000a
 int id buttontaxismenuprinc 0x7f060008
 int id hybrid 0x7f060004
@@ -86,7 +87,6 @@ int id mapclienttaxi 0x7f060011
 int id none 0x7f060000
 int id normal 0x7f060001
 int id progressBar1 0x7f06000d
-int id progressBarOverList 0x7f06000e
 int id satellite 0x7f060002
 int id terrain 0x7f060003
 int id text_field_busqueda_inicio 0x7f060006
@@ -125,6 +125,7 @@ int string auth_client_using_bad_version_title 0x7f07000f
 int string boton_profile 0x7f070019
 int string button_directorio 0x7f070023
 int string button_eventos 0x7f070021
+int string button_filtrar 0x7f07002f
 int string button_hacia_map 0x7f07002e
 int string button_initial 0x7f07001f
 int string button_opciones 0x7f070025

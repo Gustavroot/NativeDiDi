@@ -1,21 +1,103 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DecripcionEmpresaActivity" >
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    tools:context=".EventosActivity"
+    android:orientation="vertical" >
 
-    <Button
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/button_hacia_map" 
-       android:layout_marginTop="24dp"
-       android:textColor="#FFFFFF"
-       android:onClick="clickeadoButtonHaciaLayoutMapa"
-    />
-    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" >
 
-</RelativeLayout>
+            <ImageButton
+                android:id="@+id/boton_imagen_hacia_profile"
+                android:layout_width="0dp"
+                android:layout_weight=".15"
+                android:layout_height="match_parent"
+                android:background="@drawable/configuser"
+                />
+            
+            <EditText android:id="@+id/text_field_busqueda_inicio"
+                android:layout_height="match_parent"
+                android:hint="@string/string_buscar"
+                android:layout_weight=".6"
+                android:layout_width="0dp" />
+
+            <ImageButton
+                android:id="@+id/boton_imagen_proceder_busqueda"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+                android:background="@drawable/logoddflat"
+                android:scaleType="centerInside"
+                android:onClick="clickeadoAlBotonBusqueda"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/buttontaxismenuprinc"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+		        android:text="@string/button_taxis"
+		        android:onClick="pasarAViewPedirTaxi" />
+            <Button
+                android:id="@+id/buttoneventosmenuprinc"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+		        android:text="@string/button_eventos"
+		        android:onClick="clickeadoAlBotonEventos" />
+            <Button
+                android:id="@+id/buttonreservasmenuprinc"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+		        android:text="@string/button_reservas"
+		        android:onClick="clickeadoAlBotonReservas" />
+            <Button
+                android:id="@+id/buttondirectoriomenuprinc"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:layout_height="match_parent"
+                android:background="@null"
+		        android:text="@string/button_directorio" />
+
+        </LinearLayout>
+	<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".80"
+            android:orientation="horizontal" >
+			<ListView
+			    android:id="@+id/lista_despliegue_search"
+			    android:isScrollContainer="false"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent" >
+			</ListView>
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                />
+	</RelativeLayout>
+</LinearLayout>

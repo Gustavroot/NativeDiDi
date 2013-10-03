@@ -64,7 +64,6 @@
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:textColor="#FFFFFF"
 		        android:text="@string/button_eventos" />
             <Button
                 android:id="@+id/buttonreservasmenuprinc"

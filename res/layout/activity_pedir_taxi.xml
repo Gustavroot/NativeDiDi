@@ -57,7 +57,6 @@
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:textColor="#FFFFFF"
 		        android:text="@string/button_taxis" />
             <Button
                 android:id="@+id/buttoneventosmenuprinc"
@@ -120,7 +119,6 @@
     	            android:layout_height="match_parent"
         	        android:scaleType="centerCrop"
                 	android:background="@null"
-                	android:textColor="#FFFFFF"
 			        android:text="@string/button_opciones" />
                 <Button
                     android:layout_width="0dp"
@@ -128,7 +126,6 @@
     	            android:layout_height="match_parent"
         	        android:scaleType="centerCrop"
                 	android:background="@null"
-                	android:textColor="#FFFFFF"
 			        android:text="@string/button_solicitud" />
         </LinearLayout>
         

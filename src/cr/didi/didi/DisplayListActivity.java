@@ -19,15 +19,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class DisplayListActivity extends Activity {
 	
 	private static String latitud_cliente = "";
 	private static String longitud_cliente = "";
 	private static String nombre_cliente = "";
+	private static String logo_cliente = "";
 	private static JSONArray jArray;
+	
+	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 
 	//Creacion e iniciacion de las dos constantes utilizadas aqui para el paso
 	//hacia el view de GoogleMap
@@ -35,6 +41,7 @@ public class DisplayListActivity extends Activity {
 	public final static String EXTRA_MESSAGE_LNG = "com.example.myfirstapp.MESSAGE_LNG";
 	//EXTRA_MESSAGE_NAME_CLIENT
 	public final static String EXTRA_MESSAGE_NAME_CLIENT = "com.example.myfirstapp.MESSAGE_NAME_CLIENT";
+	public final static String EXTRA_MESSAGE_LOGO_CLIENT = "com.example.myfirstapp.MESSAGE_LOGO_CLIENT";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +49,7 @@ public class DisplayListActivity extends Activity {
 		setContentView(R.layout.activity_display_list);
 		
         //Se mantiene oculta la barra de progreso desde el inicio
-        ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+        ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
         pb.setVisibility(View.GONE);
 		
 		// Show the Up button in the action bar.
@@ -54,6 +61,11 @@ public class DisplayListActivity extends Activity {
 		//Get intent
 		Intent intent = getIntent();
 		String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_RESULT_SEARCH);
+		//Se retoma el string de busqueda
+		String result2= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_EDIT_TEXT);
+        EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        editText.setText(result2);
+
 		
         /*
 	    // Create the text view
@@ -87,6 +99,7 @@ public class DisplayListActivity extends Activity {
 	            			latitud_cliente=jArray.getJSONObject(position).get("latitud").toString();
 	            			longitud_cliente=jArray.getJSONObject(position).get("longitud").toString();
 	            			nombre_cliente=jArray.getJSONObject(position).get("nombre").toString();
+	            			logo_cliente=jArray.getJSONObject(position).get("logo").toString();
 	            		}
 	            		catch(Exception e){
 	            			latitud_cliente="0";
@@ -113,7 +126,20 @@ public class DisplayListActivity extends Activity {
 	        //{
 	        //  listContents.add(jsonArray.getString(i));
 	        //}
-	    	
+	    	String cat_cliente="";
+	    	try{
+	    		cat_cliente= intent.getStringExtra(SubcategoriasActivity.EXTRA_MESSAGE_CAT_CLIENTE);
+	    	}
+	    	catch(Exception e){}
+			//Toast.makeText(DisplayListActivity.this, cat_cliente, Toast.LENGTH_SHORT).show();
+			if(cat_cliente==null){
+				cat_cliente="Varias";
+			}
+			if(length==0){
+				cat_cliente="Ninguna";
+			}
+			Button button_cats_client=(Button)findViewById(R.id.buttonlabelcatclientes);
+			button_cats_client.setText(cat_cliente);
 	    }
 	    catch(Exception e){}
 	}
@@ -130,6 +156,10 @@ public class DisplayListActivity extends Activity {
     	intent.putExtra(EXTRA_MESSAGE_LAT, latitud_cliente);
     	intent.putExtra(EXTRA_MESSAGE_LNG, longitud_cliente);
     	intent.putExtra(EXTRA_MESSAGE_NAME_CLIENT, nombre_cliente);
+    	intent.putExtra(EXTRA_MESSAGE_LOGO_CLIENT, logo_cliente);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	startActivity(intent);
     	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	
@@ -154,19 +184,19 @@ public class DisplayListActivity extends Activity {
     	    return null;
     	}
     	protected void onPostExecute(Double result){
-    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
     		pb.setVisibility(View.GONE);
     		//Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
     	}
     	protected void onProgressUpdate(Integer... progress){
-    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+    	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
     	    pb.setProgress(progress[0]);
     	}
     }
     
     public void clickeadoElementosLista() {
     	//Toast.makeText(getApplicationContext(), "Previous...", Toast.LENGTH_LONG).show();
-		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBarOverList);
+		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
 		pb.setVisibility(View.VISIBLE);
 		new MyAsyncTaskClickList().execute();		
 
@@ -193,6 +223,53 @@ public class DisplayListActivity extends Activity {
 	
 	
 	
+    
+    
+    public void pasarAViewPedirTaxi(View view) {
+    	//Paso al view de pedir taxi
+        Intent intent = new Intent(this, PedirTaxiActivity.class);
+        //EditText editText = (EditText) findViewById(R.id.edit_message);
+        //String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+        try{
+        	startActivity(intent);
+        	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+        }
+        catch(Exception e){
+        	Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+        }
+    }
+    
+    
+    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+    public void clickeadoAlBotonEventos(View view) {
+    	Intent intent = new Intent(this, EventosActivity.class);
+    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+    	//String message = editText.getText().toString();
+    	//intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+    	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
+    
+    //Ejecucion que se le asigna al boton de Eventos para el menu principal
+    public void clickeadoAlBotonReservas(View view) {
+    	Intent intent = new Intent(this, ReservasActivity.class);
+    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+    	//String message = editText.getText().toString();
+    	//intent.putExtra(EXTRA_MESSAGE, message);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+    	startActivity(intent);
+    	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
+
 	
 	
 	/**
