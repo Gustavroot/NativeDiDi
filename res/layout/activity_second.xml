@@ -30,13 +30,9 @@
 	                android:id="@+id/boton_imagen_hacia_profile"
     	            android:layout_width="0dp"
         	        android:layout_weight=".15"
-            	    android:layout_marginLeft="3sp"
-  	            	android:layout_marginRight="7sp"
-	        	    android:layout_marginTop="7sp"
-  		            android:layout_marginBottom="7sp"
         	        android:layout_height="match_parent"
             	    android:contentDescription="@string/imagebuttonstr"
-                	android:background="@drawable/configuracion"
+                	android:background="@drawable/configuracion3"
                 />
         	</LinearLayout>
 			<LinearLayout
