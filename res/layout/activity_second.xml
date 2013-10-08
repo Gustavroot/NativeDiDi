@@ -8,30 +8,52 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     tools:context=".SecondActivity"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:animateLayoutChanges="false" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".1"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:orientation="horizontal" >
 
-            <ImageButton
-                android:id="@+id/boton_imagen_hacia_profile"
-                android:layout_width="0dp"
-                android:layout_weight=".15"
-                android:contentDescription="@string/imagebuttonstr"
-                android:layout_height="match_parent"
-                android:background="@drawable/configuser"
-                />
             
-            <EditText android:id="@+id/text_field_busqueda_inicio"
-                android:layout_height="match_parent"
-                android:hint="@string/string_buscar"
-                android:layout_weight=".6"
-                android:layout_width="0dp" />
+            <LinearLayout
+    	        android:layout_width="0dp"
+        	    android:layout_height="match_parent"
+            	android:layout_weight=".15"
+    	        android:orientation="horizontal" >
+    	        <ImageButton
+	                android:id="@+id/boton_imagen_hacia_profile"
+    	            android:layout_width="0dp"
+        	        android:layout_weight=".15"
+            	    android:layout_marginLeft="3sp"
+  	            	android:layout_marginRight="7sp"
+	        	    android:layout_marginTop="7sp"
+  		            android:layout_marginBottom="7sp"
+        	        android:layout_height="match_parent"
+            	    android:contentDescription="@string/imagebuttonstr"
+                	android:background="@drawable/configuracion"
+                />
+        	</LinearLayout>
+			<LinearLayout
+    	        android:layout_width="0dp"
+        	    android:layout_height="match_parent"
+            	android:layout_weight=".6"
+	            android:background="@drawable/buscador"
+    	        android:orientation="horizontal" >
+    	        <EditText android:id="@+id/text_field_busqueda_inicio"
+	                android:layout_height="match_parent"
+    	            android:hint="@string/string_buscar"
+    	            android:background="@null"
+    	            android:paddingTop="5dp"
+    	            android:paddingBottom="5dp"
+    	            android:paddingLeft="35dp"
+        	        android:layout_width="match_parent" />
+        	</LinearLayout>
 
             <ImageButton
                 android:id="@+id/boton_imagen_proceder_busqueda"
@@ -39,7 +61,7 @@
                 android:layout_weight=".25"
                 android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
-                android:background="@drawable/logoddflat"
+                android:background="@drawable/logonuevodididifuso"
                 android:scaleType="centerInside"
                 android:onClick="clickeadoAlBotonBusqueda"
                 />
@@ -48,7 +70,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1"
+            android:layout_weight=".005"
+            android:background="@drawable/line"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" >
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".095"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:orientation="horizontal" >
@@ -56,44 +88,108 @@
             <Button
                 android:id="@+id/buttontaxismenuprinc"
                 android:layout_width="0dp"
-                android:layout_weight=".25"
+                android:layout_weight=".249"
                 android:layout_height="match_parent"
 		        android:text="@string/button_taxis"
+		        android:background="@null"
+		        android:textColor="#2980A6"
 		        android:onClick="pasarAViewPedirTaxi" />
+            <LinearLayout
+	            android:layout_width="0dp"
+    	        android:layout_height="match_parent"
+        	    android:layout_weight=".005"
+            	android:background="@drawable/grayverticallines"
+	            android:paddingLeft="@dimen/activity_horizontal_margin"
+    	        android:paddingRight="@dimen/activity_horizontal_margin"
+        	    android:orientation="horizontal" >
+	        </LinearLayout>
             <Button
                 android:id="@+id/buttoneventosmenuprinc"
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
 		        android:text="@string/button_eventos"
+		        android:background="@null"
+		        android:textColor="#2980A6"
 		        android:onClick="clickeadoAlBotonEventos" />
+            <LinearLayout
+	            android:layout_width="0dp"
+    	        android:layout_height="match_parent"
+        	    android:layout_weight=".005"
+            	android:background="@drawable/grayverticallines"
+	            android:paddingLeft="@dimen/activity_horizontal_margin"
+    	        android:paddingRight="@dimen/activity_horizontal_margin"
+        	    android:orientation="horizontal" >
+	        </LinearLayout>
             <Button
                 android:id="@+id/buttonreservasmenuprinc"
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
 		        android:text="@string/button_reservas"
+		        android:background="@null"
+		        android:textColor="#2980A6"
 		        android:onClick="clickeadoAlBotonReservas" />
+            <LinearLayout
+	            android:layout_width="0dp"
+    	        android:layout_height="match_parent"
+        	    android:layout_weight=".005"
+            	android:background="@drawable/grayverticallines"
+	            android:paddingLeft="@dimen/activity_horizontal_margin"
+    	        android:paddingRight="@dimen/activity_horizontal_margin"
+        	    android:orientation="horizontal" >
+	        </LinearLayout>
             <Button
                 android:id="@+id/buttondirectoriomenuprinc"
                 android:layout_width="0dp"
                 android:layout_weight=".25"
                 android:layout_height="match_parent"
 		        android:text="@string/button_directorio"
+		        android:background="@null"
+		        android:textColor="#2980A6"
 		        android:onClick="clickeadoAlBotonDirectorio" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".005"
+            android:background="@drawable/line"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" >
         </LinearLayout>
         
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".61"
-            android:background="@drawable/border"
+            android:layout_weight=".605"
+            android:paddingTop="@dimen/activity_vertical_margin"
             android:orientation="horizontal" >
             <ViewFlipper android:id="@+id/viewFlipperSecondActivity"
                     android:layout_height="match_parent"
         			android:layout_width="match_parent" >
 
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="vertical" >
+						<!--
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+		                      android:text="Taxis"
+		                      android:textSize="23sp"
+		                      android:gravity="center_horizontal"/>
+		                -->
+		                <ImageView
+			                android:layout_width="fill_parent"
+			                android:layout_height="fill_parent"
+			                android:src="@drawable/pri"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+			        </LinearLayout>
+                
 			        <LinearLayout
 			            android:layout_height="fill_parent"
 			            android:layout_width="fill_parent"
@@ -165,6 +261,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_vertical_margin"
             android:paddingRight="@dimen/activity_vertical_margin"
             android:layout_weight=".19"
@@ -174,8 +271,12 @@
                 android:id="@+id/boton_imagen_menu_principal_1"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
-                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:contentDescription="@string/imagebuttonstr"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidtaxi"
                 android:background="@null"
@@ -185,8 +286,12 @@
                 android:id="@+id/boton_imagen_menu_principal_2"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
-                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:contentDescription="@string/imagebuttonstr"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidexpress"
                 android:background="@null"
@@ -196,8 +301,12 @@
                 android:id="@+id/boton_imagen_menu_principal_3"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
-                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:contentDescription="@string/imagebuttonstr"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidprofesionales"
                 android:background="@null"
@@ -207,8 +316,12 @@
                 android:id="@+id/boton_imagen_menu_principal_4"
                 android:layout_width="0dp"
                 android:layout_weight=".2"
-                android:contentDescription="@string/imagebuttonstr"
                 android:layout_height="match_parent"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:contentDescription="@string/imagebuttonstr"
                 android:scaleType="centerCrop"
                 android:src="@drawable/didirapidreparaciones"
                 android:background="@null"

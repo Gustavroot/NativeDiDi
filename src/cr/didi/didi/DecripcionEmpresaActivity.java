@@ -1,8 +1,11 @@
 package cr.didi.didi;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -13,15 +16,20 @@ import org.apache.http.params.BasicHttpParams;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DecripcionEmpresaActivity extends Activity {
@@ -34,6 +42,9 @@ public class DecripcionEmpresaActivity extends Activity {
 	private static String latitud_cliente = "";
 	private static String longitud_cliente = "";
 	private static String logo_cliente = "";
+	private static String descripcion_cliente = "";
+	private static String nombre_cliente = "";
+	private static String banner_cliente = "";
 	
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 
@@ -49,11 +60,34 @@ public class DecripcionEmpresaActivity extends Activity {
 		latitud_cliente= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_LAT);
 		longitud_cliente= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_LNG);
 		logo_cliente= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_LOGO_CLIENT);
-		Toast.makeText(DecripcionEmpresaActivity.this, "PENDIENTE: "+logo_cliente, Toast.LENGTH_SHORT).show();
+		descripcion_cliente= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_DESCRIPCION_CLIENTE);
+		nombre_cliente= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_NAME_CLIENT);
+		banner_cliente= intent.getStringExtra(DisplayListActivity.EXTRA_MESSAGE_BANNER_CLIENTE);
+		//Toast.makeText(DecripcionEmpresaActivity.this, "PENDIENTE: "+logo_cliente, Toast.LENGTH_SHORT).show();
+		//Se asigna el logo con el url obtenido del request
+		//logocliente
+		ImageView imgLogoClient=(ImageView)findViewById(R.id.logocliente);
+		Bitmap bimage=  getBitmapFromURL(logo_cliente);
+		imgLogoClient.setImageBitmap(bimage);
+		
+		ImageView imgBannerClient=(ImageView)findViewById(R.id.bannercliente);
+		bimage=  getBitmapFromURL(banner_cliente);
+		imgBannerClient.setImageBitmap(bimage);
+		
+		//textdescripcioncliente
+		TextView textclientedescripcion=(TextView)findViewById(R.id.textdescripcioncliente);
+		textclientedescripcion.setText(descripcion_cliente);
+		
+		//
+		TextView textclientenombre=(TextView)findViewById(R.id.textnombrecliente);
+		textclientenombre.setText(nombre_cliente);
 		
         //Se mantiene oculta la barra de progreso desde el inicio
-        ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
-        pb.setVisibility(View.GONE);
+        //ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+        //pb.setVisibility(View.GONE);
+		
+		//EXTRA_MESSAGE_DESCRIPCION_CLIENTE
+		
         
 		//String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_RESULT_SEARCH);
 		String result2= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_EDIT_TEXT);
@@ -61,6 +95,24 @@ public class DecripcionEmpresaActivity extends Activity {
         editText.setText(result2);
 	}
 	
+	//El siguiente metodo se utiliza en la implementacion de una imagen
+	public static Bitmap getBitmapFromURL(String src) {
+        try {
+            Log.e("src",src);
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            Log.e("Bitmap","returned");
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+            return null;
+        }
+    }
 	
     /** Called when the user clicks the Send button */
     public void haciaLaBusqueda() {

@@ -29,8 +29,10 @@ public class DisplayListActivity extends Activity {
 	
 	private static String latitud_cliente = "";
 	private static String longitud_cliente = "";
+	private static String descripcion_cliente = "";
 	private static String nombre_cliente = "";
 	private static String logo_cliente = "";
+	private static String banner_cliente = "";
 	private static JSONArray jArray;
 	
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
@@ -39,9 +41,10 @@ public class DisplayListActivity extends Activity {
 	//hacia el view de GoogleMap
 	public final static String EXTRA_MESSAGE_LAT = "com.example.myfirstapp.MESSAGE_LAT";
 	public final static String EXTRA_MESSAGE_LNG = "com.example.myfirstapp.MESSAGE_LNG";
-	//EXTRA_MESSAGE_NAME_CLIENT
+	public final static String EXTRA_MESSAGE_DESCRIPCION_CLIENTE = "com.example.myfirstapp.MESSAGE_DESCRIPCION_CLIENTE";
 	public final static String EXTRA_MESSAGE_NAME_CLIENT = "com.example.myfirstapp.MESSAGE_NAME_CLIENT";
 	public final static String EXTRA_MESSAGE_LOGO_CLIENT = "com.example.myfirstapp.MESSAGE_LOGO_CLIENT";
+	public final static String EXTRA_MESSAGE_BANNER_CLIENTE = "com.example.myfirstapp.MESSAGE_BANNER_CLIENT";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +103,8 @@ public class DisplayListActivity extends Activity {
 	            			longitud_cliente=jArray.getJSONObject(position).get("longitud").toString();
 	            			nombre_cliente=jArray.getJSONObject(position).get("nombre").toString();
 	            			logo_cliente=jArray.getJSONObject(position).get("logo").toString();
+	            			descripcion_cliente=jArray.getJSONObject(position).get("descripcion").toString();
+	            			banner_cliente=jArray.getJSONObject(position).get("banner").toString();
 	            		}
 	            		catch(Exception e){
 	            			latitud_cliente="0";
@@ -157,6 +162,8 @@ public class DisplayListActivity extends Activity {
     	intent.putExtra(EXTRA_MESSAGE_LNG, longitud_cliente);
     	intent.putExtra(EXTRA_MESSAGE_NAME_CLIENT, nombre_cliente);
     	intent.putExtra(EXTRA_MESSAGE_LOGO_CLIENT, logo_cliente);
+    	intent.putExtra(EXTRA_MESSAGE_DESCRIPCION_CLIENTE, descripcion_cliente);
+    	intent.putExtra(EXTRA_MESSAGE_BANNER_CLIENTE, banner_cliente);
     	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);

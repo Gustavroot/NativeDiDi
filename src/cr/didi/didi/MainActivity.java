@@ -103,6 +103,7 @@ public class MainActivity extends Activity {
         //String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+        //overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     

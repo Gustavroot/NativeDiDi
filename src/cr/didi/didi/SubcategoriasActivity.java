@@ -81,7 +81,7 @@ public class SubcategoriasActivity extends Activity {
 	    		//Toast.makeText(DisplayListActivity.this, "no problem...", Toast.LENGTH_SHORT).show();
 	    		//Toast.makeText(DisplayListActivity.this, jsonArray.getJSONObject(i).get("nombreProducto").toString(), Toast.LENGTH_SHORT).show();
 	    		//jsonArray.getJSONObject(i);
-	            listContents.add("Subcat.: "+jsonArray.getJSONObject(i).get("nombre").toString());
+	            listContents.add(jsonArray.getJSONObject(i).get("nombre").toString());
 	            ListView myListView = (ListView) findViewById(R.id.lista_despliegue_search);
 	            //Agregado de listener a item tap
 	            myListView.setOnItemClickListener(new OnItemClickListener() {
