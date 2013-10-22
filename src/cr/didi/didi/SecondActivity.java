@@ -49,6 +49,10 @@ public class SecondActivity extends Activity {
         //Se agrega el codigo para poder hacer swipe
         ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
         vf.setOnTouchListener(new ListenerTouchViewFlipperSecondActivity());
+        
+        //Se agrega el codigo para poder hacer swipe
+        ViewFlipper vf2 = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivityHorizontalList);
+        vf2.setOnTouchListener(new ListenerTouchViewFlipperSecondActivityHorizList());
 	}
 
 	/**
@@ -311,6 +315,35 @@ public class SecondActivity extends Activity {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivity);
+
+            switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: //Cuando el usuario toca la pantalla por primera vez
+                init_x=(float)event.getX();
+                //Toast.makeText(MainActivity.this, "X position: "+init_x, Toast.LENGTH_SHORT).show();
+                return true;
+            case MotionEvent.ACTION_UP: //Cuando el usuario deja de presionar
+                float distance =init_x-(float)event.getX();
+            	//Toast.makeText(MainActivity.this, "X position: "+event.getX(), Toast.LENGTH_SHORT).show();
+            	//Toast.makeText(MainActivity.this, "X position-2: "+(float)event.getX(), Toast.LENGTH_SHORT).show();
+            	//Toast.makeText(MainActivity.this, "X position: "+distance, Toast.LENGTH_SHORT).show();
+                if(distance>0)
+                {
+                     vf.showNext();
+                }
+                if(distance<0)
+                {
+                     vf.showPrevious();
+                }
+            default:
+                break;
+            }
+            return false;
+        }
+    }
+    private class ListenerTouchViewFlipperSecondActivityHorizList implements View.OnTouchListener{
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            ViewFlipper vf = (ViewFlipper) findViewById(R.id.viewFlipperSecondActivityHorizontalList);
 
             switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: //Cuando el usuario toca la pantalla por primera vez

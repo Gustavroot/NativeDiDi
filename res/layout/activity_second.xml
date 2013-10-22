@@ -160,9 +160,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".605"
+            android:layout_weight=".55"
             android:paddingTop="@dimen/activity_vertical_margin"
-            android:orientation="horizontal" >
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
             <ViewFlipper android:id="@+id/viewFlipperSecondActivity"
                     android:layout_height="match_parent"
         			android:layout_width="match_parent" >
@@ -244,7 +245,7 @@
 			        </LinearLayout>
         
 			</ViewFlipper>
-			            <ProgressBar
+			<ProgressBar
                 android:id="@+id/progressBar1"
                 style="?android:attr/progressBarStyleLarge"
                 android:layout_width="wrap_content"
@@ -254,74 +255,191 @@
                 />
         </RelativeLayout>
         
+        
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".005"
+            android:background="@drawable/line"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" >
+        </LinearLayout>
+        
+        
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_vertical_margin"
             android:paddingRight="@dimen/activity_vertical_margin"
-            android:layout_weight=".19"
+            android:layout_weight=".25"
             android:orientation="horizontal" >
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_1"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:contentDescription="@string/imagebuttonstr"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidtaxi"
-                android:background="@null"
-                />
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_2"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:contentDescription="@string/imagebuttonstr"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidexpress"
-                android:background="@null"
-                />
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_3"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:contentDescription="@string/imagebuttonstr"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidprofesionales"
-                android:background="@null"
-                />
-            
-            <ImageButton
-                android:id="@+id/boton_imagen_menu_principal_4"
-                android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:layout_height="match_parent"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:contentDescription="@string/imagebuttonstr"
-                android:scaleType="centerCrop"
-                android:src="@drawable/didirapidreparaciones"
-                android:background="@null"
-                />
-            
-        </LinearLayout>
+			
+            <ViewFlipper android:id="@+id/viewFlipperSecondActivityHorizontalList"
+			    android:layout_height="match_parent"
+				android:layout_width="match_parent" >
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="horizontal" >
+						<!--
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+		                      android:text="Taxis"
+		                      android:textSize="23sp"
+		                      android:gravity="center_horizontal"/>
+		                -->
+		                <ImageView android:id="@+id/ddrapid1"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos1"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid2"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos2"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid3"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos3"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid4"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos4"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+			        </LinearLayout>
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="horizontal" >
+						<!--
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+		                      android:text="Taxis"
+		                      android:textSize="23sp"
+		                      android:gravity="center_horizontal"/>
+		                -->
+		                <ImageView android:id="@+id/ddrapid5"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos5"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid6"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos6"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid7"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos7"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid8"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos8"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+			        </LinearLayout>
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="horizontal" >
+						<!--
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+		                      android:text="Taxis"
+		                      android:textSize="23sp"
+		                      android:gravity="center_horizontal"/>
+		                -->
+		                <ImageView android:id="@+id/ddrapid9"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos9"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid10"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos10"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid11"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos11"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid12"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos12"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+			        </LinearLayout>
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="horizontal" >
+						<!--
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+		                      android:text="Taxis"
+		                      android:textSize="23sp"
+		                      android:gravity="center_horizontal"/>
+		                -->
+		                <ImageView android:id="@+id/ddrapid13"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos13"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid14"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos14"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid15"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos15"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+		                <ImageView android:id="@+id/ddrapid16"
+			                android:layout_width="0dp"
+			                android:layout_height="match_parent"
+			                android:src="@drawable/rapidos16"
+			                android:layout_weight=".1"
+			                android:contentDescription="@string/imagebuttonstr"
+			            />
+			        </LinearLayout>
+
+			</ViewFlipper>
+        </RelativeLayout>        
 </LinearLayout>

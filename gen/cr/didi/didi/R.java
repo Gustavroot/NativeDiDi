@@ -206,22 +206,51 @@ containing a value of this type.
         public static final int paint=0x7f02002c;
         public static final int pri=0x7f02002d;
         public static final int profile_button=0x7f02002e;
-        public static final int toolimage=0x7f02002f;
+        public static final int rapidos1=0x7f02002f;
+        public static final int rapidos10=0x7f020030;
+        public static final int rapidos11=0x7f020031;
+        public static final int rapidos12=0x7f020032;
+        public static final int rapidos13=0x7f020033;
+        public static final int rapidos14=0x7f020034;
+        public static final int rapidos15=0x7f020035;
+        public static final int rapidos16=0x7f020036;
+        public static final int rapidos17=0x7f020037;
+        public static final int rapidos2=0x7f020038;
+        public static final int rapidos3=0x7f020039;
+        public static final int rapidos4=0x7f02003a;
+        public static final int rapidos5=0x7f02003b;
+        public static final int rapidos6=0x7f02003c;
+        public static final int rapidos7=0x7f02003d;
+        public static final int rapidos8=0x7f02003e;
+        public static final int rapidos9=0x7f02003f;
+        public static final int toolimage=0x7f020040;
     }
     public static final class id {
-        public static final int action_settings=0x7f06001b;
+        public static final int action_settings=0x7f060028;
         public static final int bannercliente=0x7f060010;
         public static final int boton_imagen_hacia_profile=0x7f060005;
-        public static final int boton_imagen_menu_principal_1=0x7f060017;
-        public static final int boton_imagen_menu_principal_2=0x7f060018;
-        public static final int boton_imagen_menu_principal_3=0x7f060019;
-        public static final int boton_imagen_menu_principal_4=0x7f06001a;
         public static final int boton_imagen_proceder_busqueda=0x7f060007;
         public static final int buttondirectoriomenuprinc=0x7f06000b;
         public static final int buttoneventosmenuprinc=0x7f060009;
         public static final int buttonlabelcatclientes=0x7f060012;
         public static final int buttonreservasmenuprinc=0x7f06000a;
         public static final int buttontaxismenuprinc=0x7f060008;
+        public static final int ddrapid1=0x7f060018;
+        public static final int ddrapid10=0x7f060021;
+        public static final int ddrapid11=0x7f060022;
+        public static final int ddrapid12=0x7f060023;
+        public static final int ddrapid13=0x7f060024;
+        public static final int ddrapid14=0x7f060025;
+        public static final int ddrapid15=0x7f060026;
+        public static final int ddrapid16=0x7f060027;
+        public static final int ddrapid2=0x7f060019;
+        public static final int ddrapid3=0x7f06001a;
+        public static final int ddrapid4=0x7f06001b;
+        public static final int ddrapid5=0x7f06001c;
+        public static final int ddrapid6=0x7f06001d;
+        public static final int ddrapid7=0x7f06001e;
+        public static final int ddrapid8=0x7f06001f;
+        public static final int ddrapid9=0x7f060020;
         public static final int hybrid=0x7f060004;
         public static final int lista_despliegue_search=0x7f06000c;
         public static final int logocliente=0x7f06000e;
@@ -237,6 +266,7 @@ containing a value of this type.
         public static final int textnombrecliente=0x7f060011;
         public static final int viewFlipper=0x7f060014;
         public static final int viewFlipperSecondActivity=0x7f060016;
+        public static final int viewFlipperSecondActivityHorizontalList=0x7f060017;
     }
     public static final class layout {
         public static final int activity_buffer=0x7f030000;
