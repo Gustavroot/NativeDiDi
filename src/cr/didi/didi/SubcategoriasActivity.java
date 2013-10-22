@@ -129,7 +129,7 @@ public class SubcategoriasActivity extends Activity {
     public void haciaListadoClientes() {
     	//Request de las subcategorias
     	DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
-    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/buscarcliente?idSubcategoriaParam="+id_subcat_cliente+"&start=0&limit=50");
+    	HttpGet httpget = new HttpGet("http://tecmo.webfactional.com/didi/buscarcliente?idSubcategoriaParam="+id_subcat_cliente+"&start=0");
     	//Depends on your web service
     	httpget.setHeader("Content-type", "application/json");
     	InputStream inputStream = null;
