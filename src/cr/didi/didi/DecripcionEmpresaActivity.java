@@ -66,13 +66,20 @@ public class DecripcionEmpresaActivity extends Activity {
 		//Toast.makeText(DecripcionEmpresaActivity.this, "PENDIENTE: "+logo_cliente, Toast.LENGTH_SHORT).show();
 		//Se asigna el logo con el url obtenido del request
 		//logocliente
-		ImageView imgLogoClient=(ImageView)findViewById(R.id.logocliente);
-		Bitmap bimage=  getBitmapFromURL(logo_cliente);
-		imgLogoClient.setImageBitmap(bimage);
-		
-		ImageView imgBannerClient=(ImageView)findViewById(R.id.bannercliente);
-		bimage=  getBitmapFromURL(banner_cliente);
-		imgBannerClient.setImageBitmap(bimage);
+		Toast.makeText(DecripcionEmpresaActivity.this, logo_cliente, Toast.LENGTH_LONG).show();
+		Toast.makeText(DecripcionEmpresaActivity.this, banner_cliente, Toast.LENGTH_LONG).show();
+		try{
+			ImageView imgLogoClient=(ImageView)findViewById(R.id.logocliente);
+			Bitmap bimage=  getBitmapFromURL(logo_cliente);
+			imgLogoClient.setImageBitmap(bimage);
+			//-------------------
+			ImageView imgBannerClient=(ImageView)findViewById(R.id.bannercliente);
+			Bitmap bimage2=  getBitmapFromURL(banner_cliente);
+			imgBannerClient.setImageBitmap(bimage2);
+		}
+		catch(Exception e){
+			Toast.makeText(DecripcionEmpresaActivity.this, "Error al crear bitmap...", Toast.LENGTH_SHORT).show();
+		}
 		
 		//textdescripcioncliente
 		TextView textclientedescripcion=(TextView)findViewById(R.id.textdescripcioncliente);
@@ -120,8 +127,6 @@ public class DecripcionEmpresaActivity extends Activity {
     	//System.out.print("La cosa.");
     	String message=null;
     	
-    	//Por que no sirven estos try, catch e if??
-    	//FALTA VALIDAR EL CASO DE ESTAR VACIO EL EDItTEXT
     	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
     	message = editText.getText().toString();
 
@@ -207,6 +212,8 @@ public class DecripcionEmpresaActivity extends Activity {
     }
     
     public void clickeadoAlBotonBusqueda(View view) {
+    	Toast.makeText(DecripcionEmpresaActivity.this, "Por implementar...", Toast.LENGTH_SHORT).show();
+    	/*
     	String value=null;
     	int longValue=0;
     	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
@@ -221,6 +228,7 @@ public class DecripcionEmpresaActivity extends Activity {
     		pb.setVisibility(View.VISIBLE);
     		new MyAsyncTask().execute(value);		
     	}
+    	*/
     }
     
     public void pasarAViewPedirTaxi(View view) {

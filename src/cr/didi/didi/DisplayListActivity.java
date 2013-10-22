@@ -463,6 +463,8 @@ public class DisplayListActivity extends Activity {
     }
     
     public void clickeadoAlBotonBusqueda(View view) {
+    	Toast.makeText(DisplayListActivity.this, "Por implementar...", Toast.LENGTH_SHORT).show();
+    	/*
     	String value=null;
     	int longValue=0;
     	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
@@ -477,6 +479,7 @@ public class DisplayListActivity extends Activity {
     		pb.setVisibility(View.VISIBLE);
     		new MyAsyncTask().execute(value);		
     	}
+    	*/
     }
     
     
