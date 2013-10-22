@@ -439,7 +439,55 @@
 			                android:contentDescription="@string/imagebuttonstr"
 			            />
 			        </LinearLayout>
-
+			        <LinearLayout
+			            android:layout_height="fill_parent"
+			            android:layout_width="fill_parent"
+			            android:orientation="horizontal" >
+						<!--
+			            <TextView android:layout_height="wrap_content"
+		                      android:layout_width="fill_parent"
+		                      android:text="Taxis"
+		                      android:textSize="23sp"
+		                      android:gravity="center_horizontal"/>
+		                -->
+           			        <LinearLayout
+					            android:layout_height="fill_parent"
+					            android:layout_width="0dp"
+					            android:layout_weight=".1"
+					            android:orientation="vertical" >
+								<!--
+					            <TextView android:layout_height="wrap_content"
+				                      android:layout_width="fill_parent"
+		    		                  android:text="Reservas"
+		        		              android:textSize="23sp"
+		            		          android:gravity="center_horizontal"/>
+		            		    -->
+		            		    <ImageView
+					                android:layout_width="fill_parent"
+					                android:layout_height="fill_parent"
+					                android:src="@drawable/rapidos17"
+					                android:contentDescription="@string/imagebuttonstr"
+					            />
+					        </LinearLayout>
+           			        <LinearLayout
+					            android:layout_height="fill_parent"
+					            android:layout_width="0dp"
+					            android:layout_weight=".1"
+					            android:orientation="vertical" >
+					        </LinearLayout>
+           			        <LinearLayout
+					            android:layout_height="fill_parent"
+					            android:layout_width="0dp"
+					            android:layout_weight=".1"
+					            android:orientation="vertical" >
+					        </LinearLayout>
+           			        <LinearLayout
+					            android:layout_height="fill_parent"
+					            android:layout_width="0dp"
+					            android:layout_weight=".1"
+					            android:orientation="vertical" >
+					        </LinearLayout>
+			        </LinearLayout>
 			</ViewFlipper>
         </RelativeLayout>        
 </LinearLayout>

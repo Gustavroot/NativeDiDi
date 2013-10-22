@@ -150,6 +150,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight=".015"
+            android:orientation="horizontal" >
+            <LinearLayout
+	            android:layout_width="0dp"
+    	        android:layout_height="match_parent"
+        	    android:layout_weight=".1"
+            	android:background="@drawable/linetaxis">
+	        </LinearLayout>
+            <LinearLayout
+	            android:layout_width="0dp"
+    	        android:layout_height="match_parent"
+        	    android:layout_weight=".1">
+	        </LinearLayout>
+            <LinearLayout
+	            android:layout_width="0dp"
+    	        android:layout_height="match_parent"
+        	    android:layout_weight=".1">
+	        </LinearLayout>
+            <LinearLayout
+	            android:layout_width="0dp"
+    	        android:layout_height="match_parent"
+        	    android:layout_weight=".1">
+	        </LinearLayout>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight=".005"
             android:background="@drawable/line"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -163,7 +191,7 @@
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_weight=".735"
+            android:layout_weight=".72"
             android:orientation="horizontal" >
             <ProgressBar
                 android:id="@+id/progressBar1"
