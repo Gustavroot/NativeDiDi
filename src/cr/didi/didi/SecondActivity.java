@@ -215,6 +215,13 @@ public class SecondActivity extends Activity {
         }
     }
     
+    
+    public void clickeadoDidiRapidos(View view) {
+    	//Paso al view de pedir taxi
+    	Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+    }
+    
+    
     public void clickeadoAlBotonBusqueda(View view) {
     	String value=null;
     	int longValue=0;
