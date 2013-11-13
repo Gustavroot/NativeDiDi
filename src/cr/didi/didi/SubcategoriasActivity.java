@@ -275,6 +275,7 @@ public class SubcategoriasActivity extends Activity {
     	    try{if(inputStream != null)inputStream.close();}catch(Exception squish){}
     	}
 
+    	Toast.makeText(SubcategoriasActivity.this, "", Toast.LENGTH_SHORT).show();
     	
     	Intent intent = new Intent(this, DisplayListActivity.class);
     	//string msg

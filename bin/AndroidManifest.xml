@@ -37,8 +37,10 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBDaBtmKz5W6SShftVtb-4bnRXxFx-htwc" />
 
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,85 +48,116 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.DisplayListActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.GoogleMapActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.DisplayListActivity" >
+            android:parentActivityName="cr.didi.didi.DisplayListActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.DisplayListActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.SecondActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.MainActivity" >
+            android:parentActivityName="cr.didi.didi.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.MainActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.PedirTaxiActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.EventosActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.ReservasActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.CategoriasActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.SubcategoriasActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.BufferActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
-        <activity android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden"
+        <activity
             android:name="cr.didi.didi.DecripcionEmpresaActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:parentActivityName="cr.didi.didi.SecondActivity" >
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cr.didi.didi.SecondActivity" />
+        </activity>
+        <activity
+            android:name="cr.didi.didi.SideBarTestActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label=""
+            android:parentActivityName="cr.didi.didi.SecondActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cr.didi.didi.SecondActivity" />
         </activity>
     </application>
+
 </manifest>

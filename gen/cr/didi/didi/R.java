@@ -228,47 +228,54 @@ containing a value of this type.
         public static final int toolimage=0x7f020042;
     }
     public static final class id {
-        public static final int action_settings=0x7f060028;
-        public static final int bannercliente=0x7f060010;
-        public static final int boton_imagen_hacia_profile=0x7f060005;
-        public static final int boton_imagen_proceder_busqueda=0x7f060007;
-        public static final int buttondirectoriomenuprinc=0x7f06000b;
-        public static final int buttoneventosmenuprinc=0x7f060009;
-        public static final int buttonlabelcatclientes=0x7f060012;
-        public static final int buttonreservasmenuprinc=0x7f06000a;
-        public static final int buttontaxismenuprinc=0x7f060008;
-        public static final int ddrapid1=0x7f060018;
-        public static final int ddrapid10=0x7f060021;
-        public static final int ddrapid11=0x7f060022;
-        public static final int ddrapid12=0x7f060023;
-        public static final int ddrapid13=0x7f060024;
-        public static final int ddrapid14=0x7f060025;
-        public static final int ddrapid15=0x7f060026;
-        public static final int ddrapid16=0x7f060027;
-        public static final int ddrapid2=0x7f060019;
-        public static final int ddrapid3=0x7f06001a;
-        public static final int ddrapid4=0x7f06001b;
-        public static final int ddrapid5=0x7f06001c;
-        public static final int ddrapid6=0x7f06001d;
-        public static final int ddrapid7=0x7f06001e;
-        public static final int ddrapid8=0x7f06001f;
-        public static final int ddrapid9=0x7f060020;
+        public static final int action_settings=0x7f06002f;
+        public static final int animation_layout=0x7f06002a;
+        public static final int animation_layout_content=0x7f060006;
+        public static final int animation_layout_sidebar=0x7f060005;
+        public static final int bannercliente=0x7f060012;
+        public static final int boton_imagen_hacia_profile=0x7f060007;
+        public static final int boton_imagen_proceder_busqueda=0x7f060009;
+        public static final int buttondirectoriomenuprinc=0x7f06000d;
+        public static final int buttoneventosmenuprinc=0x7f06000b;
+        public static final int buttonlabelcatclientes=0x7f060014;
+        public static final int buttonreservasmenuprinc=0x7f06000c;
+        public static final int buttontaxismenuprinc=0x7f06000a;
+        public static final int content_button=0x7f06002d;
+        public static final int ddrapid1=0x7f06001a;
+        public static final int ddrapid10=0x7f060023;
+        public static final int ddrapid11=0x7f060024;
+        public static final int ddrapid12=0x7f060025;
+        public static final int ddrapid13=0x7f060026;
+        public static final int ddrapid14=0x7f060027;
+        public static final int ddrapid15=0x7f060028;
+        public static final int ddrapid16=0x7f060029;
+        public static final int ddrapid2=0x7f06001b;
+        public static final int ddrapid3=0x7f06001c;
+        public static final int ddrapid4=0x7f06001d;
+        public static final int ddrapid5=0x7f06001e;
+        public static final int ddrapid6=0x7f06001f;
+        public static final int ddrapid7=0x7f060020;
+        public static final int ddrapid8=0x7f060021;
+        public static final int ddrapid9=0x7f060022;
         public static final int hybrid=0x7f060004;
-        public static final int lista_despliegue_search=0x7f06000c;
-        public static final int logocliente=0x7f06000e;
-        public static final int mapclient=0x7f060013;
-        public static final int mapclienttaxi=0x7f060015;
+        public static final int lista_despliegue_search=0x7f06000e;
+        public static final int logocliente=0x7f060010;
+        public static final int mapclient=0x7f060015;
+        public static final int mapclienttaxi=0x7f060017;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
-        public static final int progressBar1=0x7f06000d;
+        public static final int progressBar1=0x7f06000f;
         public static final int satellite=0x7f060002;
+        public static final int sidebar_button=0x7f06002b;
+        public static final int sidebar_list=0x7f06002c;
         public static final int terrain=0x7f060003;
-        public static final int text_field_busqueda_inicio=0x7f060006;
-        public static final int textdescripcioncliente=0x7f06000f;
-        public static final int textnombrecliente=0x7f060011;
-        public static final int viewFlipper=0x7f060014;
-        public static final int viewFlipperSecondActivity=0x7f060016;
-        public static final int viewFlipperSecondActivityHorizontalList=0x7f060017;
+        public static final int text=0x7f06002e;
+        public static final int text_field_busqueda_inicio=0x7f060008;
+        public static final int textdescripcioncliente=0x7f060011;
+        public static final int textnombrecliente=0x7f060013;
+        public static final int viewFlipper=0x7f060016;
+        public static final int viewFlipperSecondActivity=0x7f060018;
+        public static final int viewFlipperSecondActivityHorizontalList=0x7f060019;
     }
     public static final class layout {
         public static final int activity_buffer=0x7f030000;
@@ -281,7 +288,8 @@ containing a value of this type.
         public static final int activity_pedir_taxi=0x7f030007;
         public static final int activity_reservas=0x7f030008;
         public static final int activity_second=0x7f030009;
-        public static final int activity_subcategorias=0x7f03000a;
+        public static final int activity_side_bar_test=0x7f03000a;
+        public static final int activity_subcategorias=0x7f03000b;
     }
     public static final class menu {
         public static final int buffer=0x7f0a0000;
@@ -294,7 +302,8 @@ containing a value of this type.
         public static final int pedir_taxi=0x7f0a0007;
         public static final int reservas=0x7f0a0008;
         public static final int second=0x7f0a0009;
-        public static final int subcategorias=0x7f0a000a;
+        public static final int side_bar_test=0x7f0a000a;
+        public static final int subcategorias=0x7f0a000b;
     }
     public static final class string {
         public static final int action_settings=0x7f070016;
@@ -400,6 +409,7 @@ containing a value of this type.
         public static final int title_activity_pedir_taxi=0x7f070024;
         public static final int title_activity_reservas=0x7f070028;
         public static final int title_activity_second=0x7f07001e;
+        public static final int title_activity_side_bar_test=0x7f070030;
         public static final int title_activity_subcategorias=0x7f07002a;
         public static final int titulo_elemento_lista=0x7f07001a;
     }

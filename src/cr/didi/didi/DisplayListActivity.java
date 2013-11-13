@@ -165,39 +165,27 @@ public class DisplayListActivity extends Activity {
 	//------------------------------------------------------------------------
     /** Called when the user clicks the Send button */
     public void haciaGoogleMap() {
-    	
     	if(Integer.parseInt(tipo_plan_cliente)==1 || Integer.parseInt(tipo_plan_cliente)==2){
-    		Intent intent = new Intent(this, DecripcionEmpresaActivity.class);
-        	//String latitud="9.23435";
-        	//String longitud="-84.23435";
-        	intent.putExtra(EXTRA_MESSAGE_LAT, latitud_cliente);
-        	intent.putExtra(EXTRA_MESSAGE_LNG, longitud_cliente);
-        	intent.putExtra(EXTRA_MESSAGE_NAME_CLIENT, nombre_cliente);
-        	intent.putExtra(EXTRA_MESSAGE_LOGO_CLIENT, logo_cliente);
-        	intent.putExtra(EXTRA_MESSAGE_DESCRIPCION_CLIENTE, descripcion_cliente);
-        	intent.putExtra(EXTRA_MESSAGE_BANNER_CLIENTE, banner_cliente);
-        	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
-            String message = editText.getText().toString();
-            intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
-        	startActivity(intent);
-        	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+				Intent intent = new Intent(this, DecripcionEmpresaActivity.class);
+        		//String latitud="9.23435";
+        		//String longitud="-84.23435";
+        		intent.putExtra(EXTRA_MESSAGE_LAT, latitud_cliente);
+        		intent.putExtra(EXTRA_MESSAGE_LNG, longitud_cliente);
+        		intent.putExtra(EXTRA_MESSAGE_NAME_CLIENT, nombre_cliente);
+        		intent.putExtra(EXTRA_MESSAGE_LOGO_CLIENT, logo_cliente);
+        		intent.putExtra(EXTRA_MESSAGE_DESCRIPCION_CLIENTE, descripcion_cliente);
+        		intent.putExtra(EXTRA_MESSAGE_BANNER_CLIENTE, banner_cliente);
+        		EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+            	String message = editText.getText().toString();
+            	intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
+        		startActivity(intent);
+        		overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     	}
     	else{
-    		//
-    		//Toast.makeText(getApplicationContext(), "Tipo plan menor que 3...", Toast.LENGTH_LONG).show();
+    		//String cosa="cosa";
+    	    //ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		//pb.setVisibility(View.GONE);
     	}
-    	
-    	
-    	
-    	/*
-    	int suma=0;
-    	for (int i = 0; i < 1000000000; i++)
-        {
-    		suma=suma+1;
-        }
-        */
-    	
-    	//Toast.makeText(getApplicationContext(), "Hacia google map...", Toast.LENGTH_LONG).show();
     }
 
 
@@ -206,12 +194,38 @@ public class DisplayListActivity extends Activity {
     	@Override
     	protected Double doInBackground(String... params) {
     		// TODO Auto-generated method stub
+    	    //ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+    		//pb.setVisibility(View.GONE);
     	    haciaGoogleMap();
     	    return null;
     	}
     	protected void onPostExecute(Double result){
     	    ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
     		pb.setVisibility(View.GONE);
+    	    /*
+    	    final int welcomeScreenDisplay = 4000;
+    	    Thread welcomeThread = new Thread() {
+    	        int wait = 0;
+    	        @Override
+    	        public void run() {
+    	        	try {
+    	        		super.run();
+    	        		while (wait < welcomeScreenDisplay) {
+    	        			sleep(100);
+    	        			wait += 100;
+    	        			}
+    	        		} catch (Exception e) {
+    	        			//System.out.println("EXc=" + e);
+    	        		} finally {
+   	        				//startActivity(new Intent(DisplayListActivity.this, NextActivity.class));
+   	        				ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
+   	        				pb.setVisibility(View.GONE);
+   	        				finish();
+   	        			}
+    	        	}
+    	        };
+    	        welcomeThread.start();
+    	        */
     		//Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_LONG).show();
     	}
     	protected void onProgressUpdate(Integer... progress){
@@ -369,7 +383,7 @@ public class DisplayListActivity extends Activity {
     	ListView listViewBuffer;
     	ArrayAdapter <String> adapterBuffer;
     	//ArrayList <String>listItemsBuffer=new ArrayList<String>();
-    	List<String> listItemsBuffer = new ArrayList<String>(0);
+    	ArrayList<String> listItemsBuffer = new ArrayList<String>(0);
     	//
     	counter=0;
     	listViewBuffer=(ListView) findViewById(R.id.lista_despliegue_search);
@@ -464,6 +478,9 @@ public class DisplayListActivity extends Activity {
     
     public void clickeadoAlBotonBusqueda(View view) {
     	Toast.makeText(DisplayListActivity.this, "Por implementar...", Toast.LENGTH_SHORT).show();
+    	ListView myListView = (ListView) findViewById(R.id.lista_despliegue_search);
+    	myListView.getAdapter();
+    	
     	/*
     	String value=null;
     	int longValue=0;

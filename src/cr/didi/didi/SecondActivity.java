@@ -274,6 +274,12 @@ public class SecondActivity extends Activity {
     	//888888888888888888888888888888888888888888888888888888888888888888888888
     }
     
+    //Para despliegue de sidebar
+    public void clickeadoSideBar(View view) {
+    	Intent intent = new Intent(this, SideBarTestActivity.class);
+    	startActivity(intent);
+    }
+    
     //Request de categorias
     public void requestCategorias() {
     	DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());

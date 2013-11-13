@@ -33,6 +33,7 @@
         	        android:layout_height="match_parent"
             	    android:contentDescription="@string/imagebuttonstr"
                 	android:background="@drawable/configuracion3"
+                	android:onClick="clickeadoSideBar"
                 />
         	</LinearLayout>
 			<LinearLayout

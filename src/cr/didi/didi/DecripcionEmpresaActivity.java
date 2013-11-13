@@ -66,8 +66,36 @@ public class DecripcionEmpresaActivity extends Activity {
 		//Toast.makeText(DecripcionEmpresaActivity.this, "PENDIENTE: "+logo_cliente, Toast.LENGTH_SHORT).show();
 		//Se asigna el logo con el url obtenido del request
 		//logocliente
-		Toast.makeText(DecripcionEmpresaActivity.this, logo_cliente, Toast.LENGTH_LONG).show();
-		Toast.makeText(DecripcionEmpresaActivity.this, banner_cliente, Toast.LENGTH_LONG).show();
+		if(logo_cliente.substring(logo_cliente.length()-3).equals("png")){
+			try{
+				ImageView imgLogoClient=(ImageView)findViewById(R.id.logocliente);
+				Bitmap bimage=  getBitmapFromURL(logo_cliente);
+				imgLogoClient.setImageBitmap(bimage);
+			}
+			catch(Exception e){
+				Toast.makeText(DecripcionEmpresaActivity.this, "Error al crear bitmap...", Toast.LENGTH_SHORT).show();
+			}
+		}
+		else{
+			Toast.makeText(DecripcionEmpresaActivity.this, "Logo no es png...", Toast.LENGTH_SHORT).show();
+		}
+		if(banner_cliente.substring(banner_cliente.length()-3,banner_cliente.length()).equals("png")){
+			try{
+				ImageView imgBannerClient=(ImageView)findViewById(R.id.bannercliente);
+				Bitmap bimage2=  getBitmapFromURL(banner_cliente);
+				imgBannerClient.setImageBitmap(bimage2);
+			}
+			catch(Exception e){
+				Toast.makeText(DecripcionEmpresaActivity.this, "Error al crear bitmap...", Toast.LENGTH_SHORT).show();
+			}
+		}
+		else{
+			Toast.makeText(DecripcionEmpresaActivity.this, "Banner no es png...", Toast.LENGTH_SHORT).show();
+		}
+		
+		//Toast.makeText(DecripcionEmpresaActivity.this, logo_cliente, Toast.LENGTH_LONG).show();
+		//Toast.makeText(DecripcionEmpresaActivity.this, banner_cliente, Toast.LENGTH_LONG).show();
+		/*
 		try{
 			ImageView imgLogoClient=(ImageView)findViewById(R.id.logocliente);
 			Bitmap bimage=  getBitmapFromURL(logo_cliente);
@@ -80,7 +108,7 @@ public class DecripcionEmpresaActivity extends Activity {
 		catch(Exception e){
 			Toast.makeText(DecripcionEmpresaActivity.this, "Error al crear bitmap...", Toast.LENGTH_SHORT).show();
 		}
-		
+		*/
 		//textdescripcioncliente
 		TextView textclientedescripcion=(TextView)findViewById(R.id.textdescripcioncliente);
 		textclientedescripcion.setText(descripcion_cliente);
