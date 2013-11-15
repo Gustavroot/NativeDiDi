@@ -16,14 +16,17 @@ import org.json.JSONObject;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -31,8 +34,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import cr.didi.widget.AnimationLayout;
 
-public class SubcategoriasActivity extends Activity {
+public class SubcategoriasActivity extends Activity implements AnimationLayout.Listener {
 	
 	private static JSONArray jArray;
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
@@ -42,6 +46,12 @@ public class SubcategoriasActivity extends Activity {
 	//public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	private static String id_subcat_cliente = "";
 	private static String cat_cliente = "";
+
+    public final static String TAG = "Demo";
+
+    protected ListView mList;
+    protected AnimationLayout mLayout;
+    protected String[] mStrings = {"PERFIL", "Nombre de usuario", "Notificaciones", "Perfil", "Reservas", "\n * Favoritos", "Empresas", "Eventos"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +132,14 @@ public class SubcategoriasActivity extends Activity {
 	    	
 	    }
 	    catch(Exception e){}
+        mLayout = (AnimationLayout) findViewById(R.id.animation_layout);
+        mLayout.setListener(this);
+
+        mList   = (ListView) findViewById(R.id.sidebar_list);
+        mList.setAdapter(
+                new ArrayAdapter<String>(
+                    this, android.R.layout.simple_list_item_1
+                    , mStrings));
 	}
 	
 	//---------------------------------------------------------------------------
@@ -233,7 +251,6 @@ public class SubcategoriasActivity extends Activity {
     	
     	//System.out.print("La cosa.");
     	String message=null;
-    	
     	//Por que no sirven estos try, catch e if??
     	//FALTA VALIDAR EL CASO DE ESTAR VACIO EL EDItTEXT
     	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
@@ -274,15 +291,15 @@ public class SubcategoriasActivity extends Activity {
     		//Toast.makeText(MainActivity.this, "entro a finally...", Toast.LENGTH_SHORT).show();
     	    try{if(inputStream != null)inputStream.close();}catch(Exception squish){}
     	}
-
-    	Toast.makeText(SubcategoriasActivity.this, "", Toast.LENGTH_SHORT).show();
+    	//Toast.makeText(SubcategoriasActivity.this, "", Toast.LENGTH_SHORT).show();
     	
     	Intent intent = new Intent(this, DisplayListActivity.class);
-    	//string msg
         intent.putExtra(EXTRA_MESSAGE_EDIT_TEXT, message);
     	intent.putExtra(EXTRA_MESSAGE_RESULT_SEARCH, result);
     	startActivity(intent);
     	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
+    	
     	
     	//Put up the Yes/No message box
     	/**
@@ -334,7 +351,7 @@ public class SubcategoriasActivity extends Activity {
     	}else{
     		ProgressBar pb=(ProgressBar)findViewById(R.id.progressBar1);
     		pb.setVisibility(View.VISIBLE);
-    		new MyAsyncTask().execute(value);		
+    		new MyAsyncTask().execute(value);
     	}
     }
     
@@ -417,5 +434,40 @@ public class SubcategoriasActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+    public void onClickContentButton(View v) {
+    	InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        mLayout.toggleSidebar();
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (mLayout.isOpening()) {
+            mLayout.closeSidebar();
+        } else {
+            finish();
+        }
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarOpened() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarClosed() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public boolean onContentTouchedWhenOpening() {
+        // the content area is touched when sidebar opening, close sidebar
+        Log.d(TAG, "going to close sidebar");
+        mLayout.closeSidebar();
+        return true;
+    }
 }

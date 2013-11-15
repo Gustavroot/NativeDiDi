@@ -15,6 +15,7 @@ import org.apache.http.params.BasicHttpParams;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,13 +27,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import cr.didi.widget.AnimationLayout;
 
-public class DecripcionEmpresaActivity extends Activity {
+public class DecripcionEmpresaActivity extends Activity implements AnimationLayout.Listener {
 
 	public final static String EXTRA_MESSAGE_LAT = "com.example.myfirstapp.MESSAGE_LAT";
 	public final static String EXTRA_MESSAGE_LNG = "com.example.myfirstapp.MESSAGE_LNG";
@@ -47,6 +52,12 @@ public class DecripcionEmpresaActivity extends Activity {
 	private static String banner_cliente = "";
 	
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
+	
+    public final static String TAG = "Demo";
+
+    protected ListView mList;
+    protected AnimationLayout mLayout;
+    protected String[] mStrings = {"PERFIL", "Nombre de usuario", "Notificaciones", "Perfil", "Reservas", "\n * Favoritos", "Empresas", "Eventos"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +139,15 @@ public class DecripcionEmpresaActivity extends Activity {
 		String result2= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_EDIT_TEXT);
         EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
         editText.setText(result2);
+        
+        mLayout = (AnimationLayout) findViewById(R.id.animation_layout);
+        mLayout.setListener(this);
+
+        mList   = (ListView) findViewById(R.id.sidebar_list);
+        mList.setAdapter(
+                new ArrayAdapter<String>(
+                    this, android.R.layout.simple_list_item_1
+                    , mStrings));
 	}
 	
 	//El siguiente metodo se utiliza en la implementacion de una imagen
@@ -349,5 +369,41 @@ public class DecripcionEmpresaActivity extends Activity {
     	//intent.putExtra(EXTRA_MESSAGE_NAME_CLIENT, nombre_cliente);
     	startActivity(intent);
     	overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
+    public void onClickContentButton(View v) {
+    	InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        mLayout.toggleSidebar();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mLayout.isOpening()) {
+            mLayout.closeSidebar();
+        } else {
+            finish();
+        }
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarOpened() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarClosed() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public boolean onContentTouchedWhenOpening() {
+        // the content area is touched when sidebar opening, close sidebar
+        Log.d(TAG, "going to close sidebar");
+        mLayout.closeSidebar();
+        return true;
     }
 }

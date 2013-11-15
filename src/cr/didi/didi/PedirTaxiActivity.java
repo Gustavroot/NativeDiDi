@@ -21,10 +21,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -37,7 +41,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class PedirTaxiActivity extends FragmentActivity implements LocationListener, LocationSource{
+import cr.didi.widget.AnimationLayout;
+
+public class PedirTaxiActivity extends FragmentActivity implements LocationListener, LocationSource, AnimationLayout.Listener{
 
 	private GoogleMap mMap2;
     //private LocationClient mLocationClient;
@@ -52,6 +58,12 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	public final static String EXTRA_MESSAGE_CAT_REQUEST = "cr.didi.didi.MESSAGE_CAT_REQUEST";
 	private static float init_x = 0;
+	
+    public final static String TAG = "Demo";
+
+    protected ListView mList;
+    protected AnimationLayout mLayout;
+    protected String[] mStrings = {"PERFIL", "Nombre de usuario", "Notificaciones", "Perfil", "Reservas", "\n * Favoritos", "Empresas", "Eventos"};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +106,7 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
                 else
                 {
                     //Show an error dialog that GPS is disabled...
-                	Toast.makeText(this, "GPS deshabilitado.", Toast.LENGTH_SHORT).show();
+                	Toast.makeText(this, "GPS inhabilitado.", Toast.LENGTH_SHORT).show();
                 }
             }
             else
@@ -140,9 +152,14 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
         catch(Exception e){
         	Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_SHORT).show();
         }
-        
-        
-		
+        mLayout = (AnimationLayout) findViewById(R.id.animation_layout);
+        mLayout.setListener(this);
+
+        mList   = (ListView) findViewById(R.id.sidebar_list);
+        mList.setAdapter(
+                new ArrayAdapter<String>(
+                    this, android.R.layout.simple_list_item_1
+                    , mStrings));
 	}
 		//0000000000000000000000000000000000000000000000000000000000000000000000
 		@Override
@@ -482,4 +499,41 @@ public class PedirTaxiActivity extends FragmentActivity implements LocationListe
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+    public void onClickContentButton(View v) {
+    	InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        mLayout.toggleSidebar();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mLayout.isOpening()) {
+            mLayout.closeSidebar();
+        } else {
+            finish();
+        }
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarOpened() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarClosed() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public boolean onContentTouchedWhenOpening() {
+        // the content area is touched when sidebar opening, close sidebar
+        Log.d(TAG, "going to close sidebar");
+        mLayout.closeSidebar();
+        return true;
+    }
 }

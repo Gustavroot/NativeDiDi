@@ -12,24 +12,37 @@ import org.apache.http.params.BasicHttpParams;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import cr.didi.widget.AnimationLayout;
 
-public class ReservasActivity extends Activity {
+
+public class ReservasActivity extends Activity implements AnimationLayout.Listener {
 	
 	public final static String EXTRA_MESSAGE_RESULT_SEARCH = "cr.didi.didi.MESSAGE";
 	public final static String EXTRA_MESSAGE_CAT_REQUEST = "cr.didi.didi.MESSAGE_CAT_REQUEST";
 	public final static String EXTRA_MESSAGE_EDIT_TEXT = "cr.didi.didi.MESSAGE_EDIT_TEXT";
 	private static float init_x = 0;
+	
+    public final static String TAG = "Demo";
+
+    protected ListView mList;
+    protected AnimationLayout mLayout;
+    protected String[] mStrings = {"PERFIL", "Nombre de usuario", "Notificaciones", "Perfil", "Reservas", "\n * Favoritos", "Empresas", "Eventos"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +60,15 @@ public class ReservasActivity extends Activity {
     	String result= intent.getStringExtra(SecondActivity.EXTRA_MESSAGE_EDIT_TEXT);
         EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
         editText.setText(result);
+        
+        mLayout = (AnimationLayout) findViewById(R.id.animation_layout);
+        mLayout.setListener(this);
+
+        mList   = (ListView) findViewById(R.id.sidebar_list);
+        mList.setAdapter(
+                new ArrayAdapter<String>(
+                    this, android.R.layout.simple_list_item_1
+                    , mStrings));
 	}
 	
     /** Called when the user clicks the Send button */
@@ -295,5 +317,40 @@ public class ReservasActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+    public void onClickContentButton(View v) {
+    	InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    	EditText editText = (EditText) findViewById(R.id.text_field_busqueda_inicio);
+    	imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        mLayout.toggleSidebar();
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (mLayout.isOpening()) {
+            mLayout.closeSidebar();
+        } else {
+            finish();
+        }
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarOpened() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public void onSidebarClosed() {
+        Log.d(TAG, "opened");
+    }
+
+    /* Callback of AnimationLayout.Listener to monitor status of Sidebar */
+    @Override
+    public boolean onContentTouchedWhenOpening() {
+        // the content area is touched when sidebar opening, close sidebar
+        Log.d(TAG, "going to close sidebar");
+        mLayout.closeSidebar();
+        return true;
+    }
 }

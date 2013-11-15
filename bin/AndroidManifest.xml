@@ -40,6 +40,7 @@
         <activity
             android:name="cr.didi.didi.MainActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
@@ -51,6 +52,7 @@
         <activity
             android:name="cr.didi.didi.DisplayListActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -61,6 +63,7 @@
         <activity
             android:name="cr.didi.didi.GoogleMapActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.DisplayListActivity"
             android:screenOrientation="portrait" >
@@ -71,6 +74,7 @@
         <activity
             android:name="cr.didi.didi.SecondActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.MainActivity"
             android:screenOrientation="portrait" >
@@ -81,6 +85,7 @@
         <activity
             android:name="cr.didi.didi.PedirTaxiActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -91,6 +96,7 @@
         <activity
             android:name="cr.didi.didi.EventosActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -101,6 +107,7 @@
         <activity
             android:name="cr.didi.didi.ReservasActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -111,6 +118,7 @@
         <activity
             android:name="cr.didi.didi.CategoriasActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -121,6 +129,7 @@
         <activity
             android:name="cr.didi.didi.SubcategoriasActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -131,6 +140,7 @@
         <activity
             android:name="cr.didi.didi.BufferActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -141,6 +151,7 @@
         <activity
             android:name="cr.didi.didi.DecripcionEmpresaActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
@@ -151,6 +162,7 @@
         <activity
             android:name="cr.didi.didi.SideBarTestActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label=""
             android:parentActivityName="cr.didi.didi.SecondActivity"
             android:screenOrientation="portrait" >
